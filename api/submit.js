@@ -1,7 +1,7 @@
 // Saves a form submission. POST { form, data }.
 const { configured, pipeline, KEYS } = require('./_store');
 
-const FORMS = ['waitlist', 'waitlist-inline', 'newsletter', 'contact', 'concern', 'apply'];
+const FORMS = ['waitlist', 'waitlist-inline', 'newsletter', 'contact', 'concern', 'apply', 'partner'];
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 module.exports = async (req, res) => {

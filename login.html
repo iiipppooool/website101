@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in — Engramyx</title>
+<meta name="description" content="Sign in to your Lattice account or the Guardian Portal.">
+<meta name="theme-color" content="#060809">
+<meta property="og:title" content="Log in — Engramyx">
+<meta property="og:description" content="Sign in to your Lattice account or the Guardian Portal.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
+<noscript><style>html.is-loading .wipe{display:none}html.is-loading body{overflow:auto}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body data-page="login">
+<main>
+<section class="lg">
+  <div class="lg-card">
+    <div class="lg-tabs" role="tablist"><button role="tab" aria-selected="true" data-t="user" class="on">Lattice user</button><button role="tab" aria-selected="false" data-t="guardian">Guardian</button></div>
+    <div class="lg-pane on" data-p="user">
+      <div class="lg-view on" data-v="start">
+        <div class="lg-scan" id="lg-scan" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+        <h1 class="h-md">Sign in with your Lattice.</h1>
+        <p class="muted" id="lg-status">No password. Your Lattice identifies you to nearby devices automatically.</p>
+        <button class="btn solid" id="lg-go" data-magnetic>Authenticate<span class="arr"></span></button>
+        <p class="fine">This page never asks for a password. If a page claiming to be Engramyx does, close it.</p>
+      </div>
+      <div class="lg-view" data-v="none">
+        <span class="mono" style="color:var(--red)">No Lattice detected</span>
+        <h2 class="h-md">You don't have one yet.</h2>
+        <p class="muted">Nothing near this device is transmitting a serial. If you're considering a Lattice, the suitability screening takes about two minutes.</p>
+        <div class="lg-btns"><a class="btn solid" href="/screening">Take the screening<span class="arr"></span></a><button class="btn" data-waitlist>Join the waitlist</button></div>
+        <button class="link" data-back>Try again</button>
+      </div>
+      <div class="lg-view" data-v="cand">
+        <span class="mono cy live">Candidate recognised</span>
+        <h2 class="h-md" id="lg-id">EX-P-0000</h2>
+        <p class="muted">You don't have a Lattice yet, but we have your screening. This is your placement record.</p>
+        <ol class="lg-steps" id="lg-steps"></ol>
+        <dl class="res-dl" id="lg-dl" style="margin:22px 0"></dl>
+        <p class="fine">You were recognised without signing in. That is working as intended.</p>
+        <button class="link" data-back id="lg-out">Sign out</button>
+      </div>
+    </div>
+    <div class="lg-pane" data-p="guardian">
+      <h2 class="h-md">Guardian sign-in.</h2>
+      <p class="muted">Guardians sign in with the serial of the Lattice in their care. You'll find it on the device paperwork.</p>
+      <div class="lg-btns"><a class="btn solid" href="/guardian">Open the Guardian Portal<span class="arr"></span></a></div>
+      <p class="fine">Enterprise Guardians managing more than 25 people should use single sign-on from their own network.</p>
+    </div>
+  </div>
+</section>
+</main>
+<script src="/assets/vendor/lenis.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/login.js"></script>
+</body>
+</html>

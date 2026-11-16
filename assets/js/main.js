@@ -16,7 +16,11 @@
     ['safety', 'Safety & Ethics'],
     ['about', 'Company'],
   ];
+  // Real sponsors: add entries here and they play first on /partners and appear in the footer, marked as sponsored.
+  // { name: 'Brand', tagline: 'One line about them', url: 'https://example.com', text: 'The advert copy shown in the player.' }
+  const SPONSORS = [];
   const MORE = [
+    ['partners', 'For business', 'Advertise with Engramyx'],
     ['screening', 'Suitability screening', 'Ten questions, two minutes'],
     ['guardian', 'Guardian Portal', 'Sign in to someone in your care'],
     ['site-4', 'Site 4', 'Internal console'],
@@ -32,12 +36,13 @@
     <a class="logo" href="/" aria-label="Engramyx home">${LOGO}<span>Engramyx</span></a>
     <nav class="nav-links" aria-label="Primary">${PAGES.map(([h, l]) => `<a href="/${h}" class="${page === h ? 'on' : ''}">${l}</a>`).join('')}<div class="more"><button class="more-btn ${MORE.some(([h]) => h === page) ? 'on' : ''}" aria-expanded="false" aria-haspopup="true">More<i></i></button><div class="more-panel">${MORE.map(([h, l, d]) => `<a href="/${h}" class="${h === 'site-4' ? 'r' : ''}"><b>${l}</b><small>${d}</small></a>`).join('')}</div></div></nav>
     <div class="nav-right">
+      <a class="nav-login" href="/login">Log in</a>
       <button class="btn sm solid" data-waitlist data-magnetic>Join the waitlist</button>
       <button class="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
     </div>
   </div></header>
   <div class="mmenu" aria-hidden="true">
-    <div>${[['', 'Home'], ...PAGES, ...MORE.map(([h, l]) => [h, l])].map(([h, l], i) => `<a class="big" style="--i:${i}" href="/${h}">${l}</a>`).join('')}</div>
+    <div>${[['', 'Home'], ...PAGES, ...MORE.map(([h, l]) => [h, l]), ['login', 'Log in']].map(([h, l], i) => `<a class="big" style="--i:${i}" href="/${h}">${l}</a>`).join('')}</div>
     <button class="btn solid" data-waitlist style="align-self:flex-start;margin-top:30px">Join the waitlist<span class="arr"></span></button>
   </div>`;
 
@@ -57,7 +62,7 @@
         <li><a href="/how-it-works">How it works</a></li><li><a href="/app">The App</a></li><li><a href="/motor-link">Motor Link</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/screening">Suitability screening</a></li><li><a href="#" data-waitlist>Waitlist</a></li>
       </ul></div>
       <div><h5>Company</h5><ul>
-        <li><a href="/about">About</a></li><li><a href="/about#roles">Careers</a></li><li><a href="/safety">Safety &amp; Ethics</a></li><li><a href="/guardian">Guardian Portal</a></li><li><a href="/site-4">Site 4</a></li><li><a href="/contact">Contact</a></li>
+        <li><a href="/about">About</a></li><li><a href="/about#roles">Careers</a></li><li><a href="/safety">Safety &amp; Ethics</a></li><li><a href="/partners">For business</a></li><li><a href="/login">Log in</a></li><li><a href="/guardian">Guardian Portal</a></li><li><a href="/site-4">Site 4</a></li><li><a href="/contact">Contact</a></li>
       </ul></div>
       <div><h5>Network status</h5><ul>
         <li class="mono muted"><span class="live">All regions nominal</span></li>
@@ -65,9 +70,10 @@
         <li class="mono cy tick-num" data-ticker>—</li>
       </ul></div>
     </div>
+    ${SPONSORS.length ? `<div class="spons"><span class="mono">Sponsored</span>${SPONSORS.map((x) => `<a href="${x.url}" target="_blank" rel="sponsored noopener"><b>${x.name}</b><small>${x.tagline || ''}</small></a>`).join('')}</div>` : ''}
     <div class="footer-word" data-parallax="-0.06" aria-hidden="true">Engramyx</div>
     <div class="footer-bot">
-      <p class="fine">&copy; 2026 Engramyx Neurotechnologies AG, Zug. Lattice, Motor Link and Guardian are trademarks of Engramyx. The Lattice is a Class III implantable device. Memories are retained for the lifetime of the account and for a reasonable period thereafter. Engramyx may access stored memories to improve the service.</p>
+      <p class="fine">&copy; 2026 Engramyx Neurotechnologies AG, Zug. Lattice, Motor Link and Guardian are trademarks of Engramyx. The Lattice is an investigational device and is not yet approved for general sale. Memories are retained for the lifetime of the account and for a reasonable period thereafter. Engramyx may access stored memories to improve the service.</p>
       <p class="fine"><a href="/legal#privacy">Privacy</a> &nbsp;·&nbsp; <a href="/legal#terms">Terms</a> &nbsp;·&nbsp; <a href="/safety#consent">Consent ledger</a> &nbsp;·&nbsp; <a href="/contact">Contact</a> &nbsp;·&nbsp; <a href="/support">Support the creator</a></p>
     </div>
   </div></footer>`;
@@ -78,7 +84,7 @@
     <div class="modal-card" data-lenis-prevent>
       <button class="modal-x" data-close aria-label="Close"></button>
       <form class="form" data-form="waitlist" novalidate>
-        <span class="eyebrow">Cohort 7 &nbsp;·&nbsp; Spring intake</span>
+        <span class="eyebrow">Cohort 2 &nbsp;·&nbsp; Early access</span>
         <h3 class="h-md" id="wl-t" style="margin:18px 0 10px">Reserve your Lattice.</h3>
         <p class="muted" style="margin-bottom:28px;font-size:14px">Placement is by clinical suitability and order of registration. No payment is taken today.</p>
         <div class="row2">
@@ -112,7 +118,7 @@
   }
   const subs = [];
   const EX = (window.EX = {
-    RM, FINE, $, $$, clamp, lerp, lenis,
+    RM, FINE, $, $$, clamp, lerp, lenis, SPONSORS,
     onFrame(fn) { subs.push(fn); },
     // 0..1 progress of a tall element through the viewport while its sticky child is pinned
     pin(el) { const r = el.getBoundingClientRect(); return clamp(-r.top / Math.max(1, r.height - innerHeight)); },
@@ -243,10 +249,10 @@
   if (tickers.length) {
     const d = new Date();
     const secs = d.getUTCHours() * 3600 + d.getUTCMinutes() * 60 + d.getUTCSeconds();
-    let val = 1_204_771 + secs * 2893;
+    let val = 1204 + secs * 4;
     const paint = () => tickers.forEach((t) => (t.textContent = val.toLocaleString('en-GB')));
     paint();
-    setInterval(() => { val += 180 + Math.floor(Math.random() * 420); paint(); }, RM ? 2000 : 140);
+    setInterval(() => { val += Math.floor(Math.random() * 2); paint(); }, RM ? 2000 : 140);
   }
 
   /* ---------- glitch ---------- */

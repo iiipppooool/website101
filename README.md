@@ -17,6 +17,8 @@ Multi-page marketing site. Static HTML, CSS and vanilla JavaScript: no build ste
 | `/screening` | `screening.html` (quiz with a downloadable result card; nothing is sent anywhere) |
 | `/site-4` | `site-4.html` (hidden console: click the redacted Site 4 coordinates on `/about` three times, or type `remember` on any page) |
 | `/pricing` | `pricing.html` |
+| `/partners` | `partners.html` (page for brands, with an advert player and enquiry form) |
+| `/login` | `login.html` (sign-in page; deliberately has no password field) |
 | `/legal` | `legal.html` (privacy notice and terms) |
 | `/guardian` | `guardian.html` (portal; unlocks with the sample serial `EX-0214-7731` shown on the home and Motor Link pages) |
 | `/admin` | `admin.html` (private sign-up viewer) |
@@ -69,3 +71,13 @@ Each page loads Vercel Web Analytics (`/_vercel/insights/script.js`). Turn it on
 ## Email
 
 The contact page lists `placement@`, `guardians@`, `help@` and `press@engramyx.org`. Set up forwarding for those addresses with your domain provider, or mail sent to them will bounce.
+
+## Sponsors
+
+To show a real sponsor, add an entry to the `SPONSORS` array near the top of `assets/js/main.js`:
+
+```js
+{ name: 'Brand', tagline: 'One line about them', url: 'https://example.com', text: 'The advert copy shown in the player.' }
+```
+
+Sponsors play first in the advert player on `/partners` and appear in the footer of every page, labelled "Sponsored". Keep that label: UK advertising rules require paid placements to be identifiable as adverts.

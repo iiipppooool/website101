@@ -594,3 +594,40 @@
 .term-keys { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; max-width: 92ch; }
 .term-keys button { font: inherit; font-size: 11px; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--line-2); border-radius: 6px; padding: 6px 11px; transition: color 0.25s, border-color 0.25s, background 0.25s; }
 .term-keys button:hover { color: var(--cyan); border-color: var(--cyan); background: rgba(165, 238, 248, 0.06); }
+
+/* ================= PARTNERS ================= */
+.adp { padding: clamp(22px, 3vw, 34px); }
+.adp:hover { transform: none; }
+.adp-top { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+.adp-top #adp-kind { color: var(--muted); } .adp-top #adp-kind.real { color: var(--cyan); }
+.adp-stage { min-height: 300px; display: flex; flex-direction: column; justify-content: center; gap: 22px; padding: 30px 0; transition: opacity 0.45s, transform 0.6s var(--ease); }
+.adp-stage.out { opacity: 0; transform: translateY(14px); }
+.adp-text { font-family: var(--head); font-size: clamp(22px, 2.5vw, 32px); line-height: 1.22; letter-spacing: -0.02em; }
+.adp-brand b { display: block; font-weight: 500; font-size: 15px; } .adp-brand small { font-size: 12.5px; }
+.adp-bar { height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.adp-bar i { display: block; height: 100%; background: var(--cyan); transform-origin: left; transform: scaleX(0); }
+.adp-ctrl { display: flex; align-items: center; gap: 8px; margin-top: 18px; }
+.adp-ctrl button { height: 36px; min-width: 36px; padding: 0 13px; border: 1px solid var(--line-2); border-radius: 100px; font-size: 13px; transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease); }
+.adp-ctrl button:hover { border-color: var(--text); background: rgba(255, 255, 255, 0.06); } .adp-ctrl button:active { transform: scale(0.94); }
+.adp-ctrl .link { margin-left: auto; }
+/* ================= LOGIN ================= */
+.lg { min-height: 100svh; display: grid; place-items: center; padding: 120px 20px 80px; }
+.lg-card { width: min(480px, 100%); border: 1px solid var(--line-2); border-radius: 20px; background: var(--bg-2); padding: clamp(24px, 4vw, 40px); }
+.lg-tabs { display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border: 1px solid var(--line); border-radius: 100px; margin-bottom: 34px; }
+.lg-tabs button { padding: 10px; border-radius: 100px; font-size: 13px; color: var(--muted); transition: background 0.35s, color 0.35s; }
+.lg-tabs button.on { background: var(--text); color: var(--bg); }
+.lg-pane, .lg-view { display: none; } .lg-pane.on, .lg-view.on { display: block; animation: rise 0.7s var(--ease) both; }
+.lg-card h1, .lg-card h2 { margin: 14px 0 12px; } .lg-card p.muted { font-size: 14.5px; margin-bottom: 26px; min-height: 3em; }
+.lg-card .fine { margin-top: 22px; } .lg-card .link { margin-top: 20px; }
+.lg-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.lg-scan { position: relative; width: 92px; height: 92px; margin: 6px 0 24px; }
+.lg-scan i { position: absolute; inset: 0; border: 1px solid var(--line-2); border-radius: 50%; }
+.lg-scan i:nth-child(2) { inset: 16px; } .lg-scan i:nth-child(3) { inset: 32px; }
+.lg-scan b { position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px; border-radius: 50%; background: var(--cyan); }
+.lg-scan.on i { border-color: var(--cyan); animation: ring 1.5s var(--ease) infinite; } .lg-scan.on i:nth-child(2) { animation-delay: 0.25s; } .lg-scan.on i:nth-child(3) { animation-delay: 0.5s; }
+.lg-steps { list-style: none; margin: 4px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.lg-steps li { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0 12px 22px; border-bottom: 1px solid var(--line); font-size: 14px; position: relative; color: var(--muted); }
+.lg-steps li::before { content: ""; position: absolute; left: 2px; top: 18px; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--faint); }
+.lg-steps li.done { color: var(--text); } .lg-steps li.done::before { background: var(--cyan); border-color: var(--cyan); }
+.lg-steps li.now::before { border-color: var(--cyan); animation: pulse 1.4s infinite; }
+.lg-steps small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--faint); }

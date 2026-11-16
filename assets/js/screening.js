@@ -52,7 +52,7 @@
   async function finish() {
     bar.style.transform = 'scaleX(1)'; nEl.textContent = `${TOT} / ${TOT}`; show('wait');
     const w = $('#w-text');
-    for (const line of ['Comparing you with 214,000 others.', 'Reviewing your hesitations.', 'Matching your occupation to a programme.', flags.length ? 'Selecting a Guardian for you.' : 'Confirming your Guardian.']) { w.textContent = line; await wait(1500); }
+    for (const line of ['Comparing you with 212 others.', 'Reviewing your hesitations.', 'Matching your occupation to a programme.', flags.length ? 'Selecting a Guardian for you.' : 'Confirming your Guardian.']) { w.textContent = line; await wait(1500); }
     const resist = flags.length, slow = Math.max(...times), slowQ = times.indexOf(slow) + 1;
     // the less you comply, the more you "need" it: nobody scores low
     const pct = clamp(Math.round(86 + (score / 24) * 9 + resist * 1.4 + (slow > 6 ? 1 : 0)), 87, 99);

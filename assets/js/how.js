@@ -61,7 +61,7 @@
   nodes.forEach((n) => {
     h += `<rect x="${n.x - 15}" y="${n.y - 9}" width="30" height="18" rx="3" fill="#0a0d0f" stroke="${C}" stroke-opacity=".45"/><circle cx="${n.x - 8}" cy="${n.y}" r="1.5" fill="${C}"><animate attributeName="opacity" values="1;.15;1" dur="${(0.8 + rnd() * 2.4).toFixed(1)}s" repeatCount="indefinite"/></circle><path d="M${n.x - 2} ${n.y}h11" stroke="${C}" stroke-opacity=".4"/>`;
   });
-  h += `<text x="2510" y="556" text-anchor="middle">ENGRAMYX CLOUD · 3 REGIONS · 41 EXABYTES</text></g>`;
+  h += `<text x="2510" y="556" text-anchor="middle">ENGRAMYX CLOUD · 3 REGIONS · RESEARCH CLUSTER</text></g>`;
 
   /* scene 4: phone */
   const ph = { x: 3400, y: 96, w: 210, h: 408 };
