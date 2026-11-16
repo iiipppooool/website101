@@ -35,7 +35,6 @@
 <main>
   <h1>Submissions</h1>
   <p>Enter your admin key to see who has signed up.</p>
-  <details style="margin:-8px 0 22px;color:var(--muted);font-size:13px"><summary style="cursor:pointer">First time here? How to set this up</summary><ol style="line-height:1.8;padding-left:18px"><li>In Vercel, open this project, go to Storage, create an Upstash for Redis database and connect it to the project.</li><li>In Settings, Environment Variables, add <code>ADMIN_KEY</code> with a long password of your own (12 or more characters).</li><li>Redeploy, then come back and type that password above.</li></ol></details>
   <form id="login"><input type="password" id="key" placeholder="Admin key" autocomplete="current-password" aria-label="Admin key" required><button>View</button><span id="msg" role="alert"></span></form>
   <div id="out" hidden>
     <div class="tiles" id="tiles"></div>
