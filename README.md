@@ -14,6 +14,11 @@ Multi-page marketing site. Static HTML, CSS and vanilla JavaScript: no build ste
 | `/about` | `about.html` |
 | `/contact` | `contact.html` |
 | `/support` | `support.html` |
+| `/screening` | `screening.html` (quiz with a downloadable result card; nothing is sent anywhere) |
+| `/site-4` | `site-4.html` (hidden console: click the redacted Site 4 coordinates on `/about` three times, or type `remember` on any page) |
+| `/pricing` | `pricing.html` |
+| `/guardian` | `guardian.html` (portal; unlocks with the sample serial `EX-0214-7731` shown on the home and Motor Link pages) |
+| `/admin` | `admin.html` (private sign-up viewer) |
 | not found | `404.html` |
 
 Shared navigation, footer, waitlist modal, page transitions, cursor, reveals, counters, glitch text and form handling live in `assets/js/main.js`. Each page has its own script in `assets/js/`.

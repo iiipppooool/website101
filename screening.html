@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suitability screening — Engramyx</title>
+<meta name="description" content="Two minutes, ten questions. Find out whether you are suitable for a Lattice, and who should look after it for you.">
+<meta name="theme-color" content="#060809">
+<meta property="og:title" content="Suitability screening — Engramyx">
+<meta property="og:description" content="Two minutes, ten questions. Find out whether you are suitable for a Lattice, and who should look after it for you.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
+<noscript><style>html.is-loading .wipe{display:none}html.is-loading body{overflow:auto}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body data-page="screening">
+<main>
+<section class="scr" id="scr">
+  <div class="scr-top wrap"><span class="eyebrow">Suitability screening</span><span class="mono muted tick-num" id="scr-n">00 / 10</span></div>
+  <div class="scr-bar"><i id="scr-bar"></i></div>
+  <div class="wrap scr-body">
+    <div class="scr-pane on" data-pane="intro">
+      <h1 class="h-xl" data-split>Are you suitable?</h1>
+      <p class="lede" data-reveal style="--d:400;margin-top:28px">Ten questions. There are no wrong answers, only informative ones. Answer quickly and honestly. We measure both.</p>
+      <div class="hero-cta" data-reveal style="--d:550"><button class="btn solid" id="scr-start" data-magnetic>Begin screening<span class="arr"></span></button></div>
+      <p class="fine" data-reveal style="--d:700;margin-top:26px">Your answers stay in this browser. Nothing is sent or stored by Engramyx.</p>
+    </div>
+    <div class="scr-pane" data-pane="q">
+      <span class="mono cy" id="q-num">Question 1</span>
+      <h2 class="h-lg" id="q-text"></h2>
+      <div class="scr-opts" id="q-opts"></div>
+      <p class="mono scr-echo" id="q-echo" aria-live="polite"></p>
+    </div>
+    <div class="scr-pane" data-pane="wait">
+      <span class="mono cy live">Analysing</span>
+      <h2 class="h-lg" id="w-text">Comparing you with 214,000 others.</h2>
+      <div class="scr-sk"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+    </div>
+    <div class="scr-pane" data-pane="res">
+      <div class="res-grid">
+        <div>
+          <span class="eyebrow" id="r-eyebrow">Screening complete</span>
+          <h2 class="h-xl" style="margin:22px 0 8px"><span id="r-pct" class="tick-num">0</span><span class="muted">%</span></h2>
+          <p class="h-sm" id="r-class"></p>
+          <p class="lede" id="r-copy" style="margin-top:22px"></p>
+          <dl class="res-dl" id="r-dl"></dl>
+          <div class="hero-cta"><button class="btn solid" id="r-save" data-magnetic>Save result card<span class="arr"></span></button><button class="btn" id="r-share" hidden>Share</button><button class="btn" id="r-again">Retake</button></div>
+          <p class="fine" style="margin-top:18px" id="r-fine">Results are final. Retaking the screening does not change the result we keep.</p>
+        </div>
+        <div class="res-card"><canvas id="r-cv" width="1080" height="1920" aria-label="Your screening result card" role="img"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<script src="/assets/vendor/lenis.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/screening.js"></script>
+</body>
+</html>

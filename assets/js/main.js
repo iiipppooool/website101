@@ -12,6 +12,7 @@
     ['how-it-works', 'How it works'],
     ['app', 'The App'],
     ['motor-link', 'Motor Link'],
+    ['pricing', 'Pricing'],
     ['safety', 'Safety & Ethics'],
     ['about', 'Company'],
   ];
@@ -28,7 +29,7 @@
     </div>
   </div></header>
   <div class="mmenu" aria-hidden="true">
-    <div>${[['', 'Home'], ...PAGES, ['contact', 'Contact']].map(([h, l], i) => `<a class="big" style="--i:${i}" href="/${h}">${l}</a>`).join('')}</div>
+    <div>${[['', 'Home'], ...PAGES, ['screening', 'Screening'], ['contact', 'Contact']].map(([h, l], i) => `<a class="big" style="--i:${i}" href="/${h}">${l}</a>`).join('')}</div>
     <button class="btn solid" data-waitlist style="align-self:flex-start;margin-top:30px">Join the waitlist<span class="arr"></span></button>
   </div>`;
 
@@ -45,10 +46,10 @@
         </form>
       </div>
       <div><h5>Product</h5><ul>
-        <li><a href="/how-it-works">How it works</a></li><li><a href="/app">The App</a></li><li><a href="/motor-link">Motor Link</a></li><li><a href="#" data-waitlist>Waitlist</a></li>
+        <li><a href="/how-it-works">How it works</a></li><li><a href="/app">The App</a></li><li><a href="/motor-link">Motor Link</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/screening">Suitability screening</a></li><li><a href="#" data-waitlist>Waitlist</a></li>
       </ul></div>
       <div><h5>Company</h5><ul>
-        <li><a href="/about">About</a></li><li><a href="/about#roles">Careers</a></li><li><a href="/safety">Safety &amp; Ethics</a></li><li><a href="/contact">Contact</a></li>
+        <li><a href="/about">About</a></li><li><a href="/about#roles">Careers</a></li><li><a href="/safety">Safety &amp; Ethics</a></li><li><a href="/guardian">Guardian Portal</a></li><li><a href="/contact">Contact</a></li>
       </ul></div>
       <div><h5>Network status</h5><ul>
         <li class="mono muted"><span class="live">All regions nominal</span></li>
@@ -346,6 +347,52 @@
       if (form.classList.contains('inline-form') && form.nextElementSibling) form.nextElementSibling.hidden = true;
     });
   });
+
+
+  /* ---------- small unsettling touches ---------- */
+  // the tab keeps watching when you look away
+  const realTitle = document.title;
+  document.addEventListener('visibilitychange', () => { document.title = document.hidden ? 'Still recording.' : realTitle; });
+  // returning visitors are told how many visits they remember
+  try {
+    let visits = +localStorage.getItem('ex_visits') || 0;
+    if (!sessionStorage.getItem('ex_seen')) { visits++; localStorage.setItem('ex_visits', visits); sessionStorage.setItem('ex_seen', '1'); sessionStorage.setItem('ex_memo', '1'); }
+    if (visits > 1 && sessionStorage.getItem('ex_memo') && page !== 'site-4' && page !== 'screening') {
+      sessionStorage.removeItem('ex_memo');
+      document.body.insertAdjacentHTML('beforeend', `<div class="memo" role="status"><b>Welcome back</b>This is visit ${visits}. You remember ${visits - 1} of them.</div>`);
+      const m = $('.memo');
+      setTimeout(() => m.classList.add('show'), 5000);
+      setTimeout(() => m.classList.remove('show'), 13000);
+    }
+  } catch (_) {}
+  // typing "remember" anywhere, away from a form field, opens the internal console
+  let typed = '';
+  addEventListener('keydown', (e) => {
+    if (e.target.closest && e.target.closest('input, textarea, select') || e.key.length !== 1) return;
+    typed = (typed + e.key.toLowerCase()).slice(-8);
+    if (typed === 'remember' && page !== 'site-4') { html.classList.add('is-leaving'); setTimeout(() => (location.href = '/site-4'), RM ? 0 : 620); }
+  });
+
+
+  /* ---------- live activity feed ---------- */
+  if (['home', 'app', 'pricing'].includes(page) && innerWidth > 640) {
+    const PLACES = ['Leeds', 'Zug', 'Reykjavík', 'Singapore', 'Lyon', 'Toronto', 'Osaka', 'Bristol', 'Malmö', 'Austin', 'Cork', 'Rotterdam', 'Perth', 'Glasgow'];
+    const EVENTS = [['strengthened a memory of their wedding', 0], ['replayed a childhood summer', 0], ['joined the waitlist', 0], ['softened last Tuesday', 0], ['deleted an argument', 0], ['had a memory deleted by their Guardian', 1], ['was taken for a run while asleep', 1], ['tried to revoke Guardian access', 1], ['stopped asking about it', 1], ['forgot they were on the waitlist', 0], ['completed a second shift, unaware', 1]];
+    document.body.insertAdjacentHTML('beforeend', '<div class="feed" aria-hidden="true"><i></i><p></p><button tabindex="-1" aria-label="Dismiss">×</button></div>');
+    const f = $('.feed'), txt = $('p', f); let on = true, n = 0;
+    $('button', f).addEventListener('click', () => { on = false; f.classList.remove('show'); });
+    const next = () => {
+      if (!on) return;
+      if (!document.hidden && !modal.classList.contains('open')) {
+        const e = EVENTS[n < 3 ? Math.floor(Math.random() * 5) : Math.floor(Math.random() * EVENTS.length)]; n++;
+        txt.innerHTML = `<b>Someone in ${PLACES[Math.floor(Math.random() * PLACES.length)]}</b> ${e[0]}<small>${1 + Math.floor(Math.random() * 50)} seconds ago</small>`;
+        f.classList.toggle('red', !!e[1]); f.classList.add('show');
+        setTimeout(() => f.classList.remove('show'), 5200);
+      }
+      setTimeout(next, 11000 + Math.random() * 9000);
+    };
+    setTimeout(next, 9000);
+  }
 
   /* ---------- cursor + synapse trail ---------- */
   if (FINE && !RM) {

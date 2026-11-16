@@ -32,6 +32,9 @@
     r.addEventListener('pointerenter', () => { clearTimeout(to); r.classList.remove('snap'); to = setTimeout(() => r.classList.add('snap'), 900); });
     r.addEventListener('pointerleave', () => { clearTimeout(to); r.classList.remove('snap'); });
   });
+  // the undisclosed site: look three times and it lets you in
+  const s4 = $('.sites .redact');
+  if (s4) { let n = 0; const go = () => { if (++n >= 3) { document.documentElement.classList.add('is-leaving'); setTimeout(() => (location.href = '/site-4'), RM ? 0 : 620); } }; s4.addEventListener('click', go); s4.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); }); }
   // apply buttons prefill the form
   $$('[data-apply]').forEach((b) => b.addEventListener('click', () => {
     const sel = $('#apply-role'); sel.value = b.dataset.apply; sel.dispatchEvent(new Event('input'));

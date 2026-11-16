@@ -150,6 +150,27 @@
     });
   });
 
+  /* ---------- loss calculator ---------- */
+  const lin = $('#lost-in');
+  if (lin) {
+    const dots = $('#lost-dots'); dots.innerHTML = Array.from({ length: 95 }, () => '<i></i>').join('');
+    const ds = $$('i', dots), fmtN = (n) => Math.round(n).toLocaleString('en-GB');
+    const cur = { d: 0, g: 0, p: 0 }; let tgt = { d: 0, g: 0, p: 0 };
+    const paint = () => { $('#lost-days').textContent = fmtN(cur.d); $('#lost-gone').textContent = fmtN(cur.g); $('#lost-pct').textContent = cur.p.toFixed(1) + '%'; };
+    const set = () => {
+      const age = +lin.value; $('#lost-age').textContent = age; lin.style.setProperty('--p', ((age - 6) / 89) * 100 + '%');
+      // unassisted recall: the last year is mostly intact, early childhood is nearly gone
+      let kept = 0;
+      ds.forEach((d, y) => { const back = age - 1 - y, k = y >= age ? -1 : clamp(0.82 * Math.exp(-back / 3.2) + (y < 4 ? 0.005 : 0.035)); if (k >= 0) kept += k; d.className = k < 0 ? '' : 'on'; d.style.opacity = k < 0 ? '' : (0.14 + 0.86 * k).toFixed(2); });
+      const days = age * 365.25, gone = days * (1 - kept / age);
+      tgt = { d: days, g: gone, p: (gone / days) * 100 };
+      $('#lost-note').textContent = age >= 60 ? 'At your age, we recommend not waiting. With a Lattice this figure is zero, unless otherwise arranged.' : age <= 16 ? 'Under 18s need a parent to register, who becomes their Guardian. With a Lattice this figure is zero.' : 'Based on unassisted human recall. With a Lattice this figure is zero, unless otherwise arranged.';
+      if (RM) { Object.assign(cur, tgt); paint(); }
+    };
+    lin.addEventListener('input', set); set();
+    if (!RM) EX.onFrame(() => { if (Math.abs(cur.d - tgt.d) < 0.5 && Math.abs(cur.g - tgt.g) < 0.5) return; for (const k in cur) cur[k] = lerp(cur[k], tgt[k], 0.14); paint(); });
+  }
+
   /* ---------- capability mini visuals ---------- */
   const viz = (n) => $(`[data-viz="${n}"]`);
   if (viz('capture')) viz('capture').innerHTML = '<div class="vz-dots">' + Array.from({ length: 108 }, (_, i) => `<i style="--k:${(i % 18) * 3 + Math.floor(i / 18) * 9}"></i>`).join('') + '</div>';

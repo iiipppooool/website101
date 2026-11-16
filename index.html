@@ -57,6 +57,26 @@
   </div>
 </section>
 
+<section class="section rule" id="lost">
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow" data-reveal>Calculate your loss</span>
+      <h2 class="h-lg" data-split style="margin-top:22px">How much of you is already gone?</h2>
+      <p class="lede" data-reveal style="margin-top:26px">Move the slider to your age. Each dot is a year. The faint ones are years you can no longer retrieve in any detail.</p>
+      <label class="lost-age" data-reveal><span class="mono muted">Your age</span><b class="tick-num" id="lost-age">17</b><input type="range" id="lost-in" min="6" max="95" value="17" aria-label="Your age"></label>
+    </div>
+    <div data-reveal>
+      <div class="lost-dots" id="lost-dots" aria-hidden="true"></div>
+      <div class="lost-out">
+        <div><b class="tick-num" id="lost-days">0</b><span>days lived</span></div>
+        <div><b class="tick-num" id="lost-gone">0</b><span>days you cannot recall</span></div>
+        <div><b class="tick-num" id="lost-pct">0%</b><span>of your life, lost</span></div>
+      </div>
+      <p class="fine" style="margin-top:14px" id="lost-note">Based on unassisted human recall. With a Lattice this figure is zero, unless otherwise arranged.</p>
+    </div>
+  </div>
+</section>
+
 <section class="hz" id="caps" aria-label="Capabilities">
   <div class="hz-pin">
     <div class="hz-head wrap"><span class="eyebrow">Capabilities</span><span class="mono muted"><b id="hz-n" class="cy">01</b> / 06</span></div>
@@ -158,7 +178,8 @@
   <div class="wrap cta-in">
     <span class="eyebrow" data-reveal>Cohort 7 is enrolling</span>
     <h2 class="h-xl" data-split>You'll never <span class="gl" data-alt="leave">lose</span> another day.</h2>
-    <p class="lede" data-reveal>Leave your email and a placement coordinator will be in touch. Suitability screening takes around ten minutes and most people pass.</p>
+    <p class="lede" data-reveal>Leave your email and a placement coordinator will be in touch. Suitability screening takes a couple of minutes and everyone passes.</p>
+    <div class="hero-cta" data-reveal><a class="btn" href="/screening" data-magnetic>Take the screening<span class="arr"></span></a></div>
     <form class="form inline-form" data-form="waitlist-inline" novalidate data-reveal>
       <label class="field"><span class="lab">Email</span><input type="email" name="email" placeholder="you@domain.com" required><span class="msg">Enter a valid email address.</span></label>
       <button class="btn solid" type="submit" data-magnetic>Request a place<span class="arr"></span></button>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guardian Portal — Engramyx</title>
+<meta name="description" content="Sign in to manage the Lattice of someone in your care.">
+<meta name="theme-color" content="#060809">
+<meta property="og:title" content="Guardian Portal — Engramyx">
+<meta property="og:description" content="Sign in to manage the Lattice of someone in your care.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
+<noscript><style>html.is-loading .wipe{display:none}html.is-loading body{overflow:auto}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body data-page="guardian">
+<main>
+<section class="gp" id="gp">
+  <div class="wrap gp-wrap">
+    <div class="gp-login" id="gp-login">
+      <span class="eyebrow">Guardian Portal</span>
+      <h1 class="h-lg" style="margin:22px 0 14px">Sign in to someone.</h1>
+      <p class="muted" style="margin-bottom:30px;max-width:44ch">Enter the serial number of the Lattice in your care. It is printed on the device and on the subject's paperwork.</p>
+      <form id="gp-form" novalidate>
+        <label class="field"><span class="lab">Lattice serial</span><input id="gp-serial" placeholder="EX-0000-0000" autocomplete="off" spellcheck="false" required><span class="msg" id="gp-msg">Enter a serial.</span></label>
+        <label class="field"><span class="lab">Guardian PIN</span><input id="gp-pin" type="password" inputmode="numeric" placeholder="••••" autocomplete="off"></label>
+        <button class="btn solid" type="submit" data-magnetic>Open session<span class="arr"></span></button>
+      </form>
+      <p class="fine" style="margin-top:22px">Not a Guardian? If someone holds your serial, you will not be told.</p>
+    </div>
+    <div class="gp-dash" id="gp-dash" hidden>
+      <div class="gp-top"><div><span class="mono cy live">Session open</span><h2 class="h-md" style="margin-top:10px">Subject EX-0214-7731</h2><p class="muted" style="font-size:13px">In your care since 14 March 2025 &nbsp;·&nbsp; Guardian: M. Halloran</p></div><button class="btn sm" id="gp-out">Sign out</button></div>
+      <div class="gp-grid">
+        <div class="card gp-c"><span class="mono muted">State</span><b id="gp-state">Asleep</b><small class="muted">Unaware of this session</small></div>
+        <div class="card gp-c"><span class="mono muted">Captured today</span><b class="tick-num" id="gp-mem">2,114</b><small class="muted">memories, all reviewed</small></div>
+        <div class="card gp-c"><span class="mono muted">Mood, as remembered</span><b class="tick-num"><span id="gp-mood">64</span><span class="muted"> / 100</span></b><small class="muted" id="gp-moodt">Remembers today as fine</small></div>
+        <div class="card gp-c"><span class="mono muted">Objections this month</span><b class="tick-num" id="gp-obj">3</b><small class="muted" id="gp-objt">None remembered</small></div>
+      </div>
+      <div class="gp-cols">
+        <div class="card">
+          <span class="mono muted">Mood floor</span>
+          <p class="muted" style="font-size:13px;margin:8px 0 14px">The lowest any day is allowed to feel in hindsight.</p>
+          <label class="mm-slider" style="margin:0"><span class="mono">Floor</span><input type="range" id="gp-floor" min="0" max="100" value="40" aria-label="Mood floor"></label>
+          <span class="mono muted" style="display:block;margin:26px 0 12px">Quick actions</span>
+          <div class="gp-acts" id="gp-acts">
+            <button data-a="soften">Soften today</button><button data-a="run">Schedule 05:30 run</button><button data-a="focus">Extend Focus to 22:00</button><button data-a="loyal">Reinforce loyalty</button><button data-a="walk" class="danger">Bring subject to me</button>
+          </div>
+        </div>
+        <div class="card">
+          <span class="mono muted">Messages from subject</span>
+          <div class="gp-msg" id="gp-inbox">
+            <p class="gp-q">"Can we talk about turning some of this off? I don't think I agreed to the nights."</p>
+            <small class="mono muted">Today 21:47 &nbsp;·&nbsp; unread</small>
+            <div class="gp-acts" style="margin-top:14px"><button data-m="resolve">Mark as resolved</button><button data-m="reply">Reply</button></div>
+          </div>
+          <span class="mono muted" style="display:block;margin:26px 0 10px">Activity</span>
+          <ol class="rs-log mono" id="gp-log" style="height:150px"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<script src="/assets/vendor/lenis.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/guardian.js"></script>
+</body>
+</html>
