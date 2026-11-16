@@ -34,7 +34,7 @@
     $('#q-num').textContent = 'Question ' + (i + 1); $('#q-text').textContent = text;
     const echo = $('#q-echo'); echo.textContent = ''; echo.className = 'mono scr-echo';
     const box = $('#q-opts'); box.className = 'scr-opts';
-    box.innerHTML = opts.map((o, k) => `<button style="--i:${k}" data-k="${k}"><span>${'ABCD'[k]}</span>${o[0]}</button>`).join('');
+    box.innerHTML = opts.map((o, k) => `<button style="--i:${k}" data-k="${k}"><span>${'ABCDEF'[k]}</span>${o[0]}</button>`).join('');
     t0 = performance.now();
   };
   $('#q-opts').addEventListener('click', async (e) => {
