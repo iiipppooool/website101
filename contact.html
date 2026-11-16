@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Engramyx</title>
+<meta name="description" content="Talk to Engramyx. Placement enquiries, Guardian support, press and clinical partnerships.">
+<meta name="theme-color" content="#060809">
+<meta property="og:title" content="Contact — Engramyx">
+<meta property="og:description" content="Talk to Engramyx. Placement enquiries, Guardian support, press and clinical partnerships.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
+<noscript><style>html.is-loading .wipe{display:none}html.is-loading body{overflow:auto}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body data-page="contact">
+<main>
+<section class="phead" style="padding-bottom:clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>Contact</span>
+    <h1 class="h-xl" data-split>Talk to us. We're already listening.</h1>
+  </div>
+</section>
+<section class="section rule" style="padding-top:clamp(50px,7vw,90px)">
+  <div class="wrap two-col">
+    <div>
+      <ul class="ct" data-stagger="80">
+        <li data-reveal><span class="mono">Placement and waitlist</span><a class="link" href="#form">placement@engramyx.com</a><p>Monday to Friday, 08:00 to 18:00 CET</p></li>
+        <li data-reveal><span class="mono">Guardian support</span><a class="link" href="#form">guardians@engramyx.com</a><p>24 hours. Priority line for enterprise Guardians.</p></li>
+        <li data-reveal><span class="mono">User support</span><a class="link" href="#form">help@engramyx.com</a><p>Replies within 10 working days. Please ask your Guardian first.</p></li>
+        <li data-reveal><span class="mono">Press</span><a class="link" href="#form">press@engramyx.com</a><p>Interviews are available with approved users.</p></li>
+        <li data-reveal><span class="mono">Registered office</span><b>Engramyx Neurotechnologies AG</b><p>Baarerstrasse 114, 6300 Zug, Switzerland</p></li>
+      </ul>
+      <div class="ct-status card" data-reveal>
+        <span class="mono muted live">Average response time today</span>
+        <b class="h-md" style="display:block;margin-top:10px">4 minutes</b>
+        <p class="muted" style="font-size:13px;margin-top:6px">Faster for existing users. We usually know why you're writing.</p>
+      </div>
+    </div>
+    <form class="form" id="form" data-form="contact" novalidate data-reveal>
+      <div class="row2">
+        <label class="field"><span class="lab">First name</span><input name="first" autocomplete="given-name" required><span class="msg">Required.</span></label>
+        <label class="field"><span class="lab">Last name</span><input name="last" autocomplete="family-name" required><span class="msg">Required.</span></label>
+      </div>
+      <label class="field"><span class="lab">Email</span><input type="email" name="email" autocomplete="email" required><span class="msg">Enter a valid email address.</span></label>
+      <div class="row2">
+        <label class="field"><span class="lab">I am</span><select name="who" required><option value="">Select</option><option>Considering a Lattice</option><option>A current user</option><option>A Guardian</option><option>An employer or institution</option><option>A journalist</option><option>A clinician</option></select><span class="msg">Required.</span></label>
+        <label class="field"><span class="lab">Lattice serial, if you have one</span><input name="serial" placeholder="EX-0000-0000"></label>
+      </div>
+      <label class="field"><span class="lab">Message</span><textarea name="message" required></textarea><span class="msg">Required.</span></label>
+      <label class="check"><input type="checkbox" name="consent" required><i></i><span>I agree that Engramyx may use the content of this message, and any memories associated with writing it, to respond to my enquiry.</span></label>
+      <button class="btn solid" type="submit" data-magnetic>Send message<span class="arr"></span></button>
+      <div class="form-done">
+        <div class="tick"><svg viewBox="0 0 16 12"><path d="M1 6l5 5L15 1"/></svg></div>
+        <h3 class="h-md">Message received<span data-out="first"></span>.</h3>
+        <p class="muted" style="margin:14px 0 20px">Reference <span class="mono cy" data-out="ref"></span>. Someone will reply within two working days. If your message was about a memory, please check whether it still concerns you.</p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+<script src="/assets/vendor/lenis.min.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

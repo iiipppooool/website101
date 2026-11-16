@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The App — Engramyx</title>
+<meta name="description" content="Your whole life, searchable. Browse today's memories, choose what to strengthen tonight, replay a moment in full, and manage Guardian access.">
+<meta name="theme-color" content="#060809">
+<meta property="og:title" content="The App — Engramyx">
+<meta property="og:description" content="Your whole life, searchable. Browse today's memories, choose what to strengthen tonight, replay a moment in full, and manage Guardian access.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
+<noscript><style>html.is-loading .wipe{display:none}html.is-loading body{overflow:auto}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body data-page="app">
+<main>
+<section class="phead">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>Engramyx for iOS and Android</span>
+    <h1 class="h-xl" data-split>Your life, in your pocket.</h1>
+    <p class="lede" data-reveal style="--d:500">Everything the Lattice captures arrives here within a second or so. Scroll back through your day, your year, your childhood. The phones below are live. Try them.</p>
+  </div>
+</section>
+
+<section class="app-row" id="s-timeline">
+  <div class="wrap app-grid">
+    <div class="app-copy">
+      <span class="mono cy" data-reveal>01 — Timeline</span>
+      <h2 class="h-lg" data-split>Today, already written down.</h2>
+      <p class="lede" data-reveal>Each memory is titled, placed and scored for how it felt. Tap one to open it. If something is missing, it was probably for the best.</p>
+      <ul class="ticks" data-reveal><li>Search by person, place, word or feeling</li><li>Emotional score from 0 to 100</li><li>Shared view for your Guardian</li></ul>
+    </div>
+    <div class="phone-wrap" data-reveal="scale"><div class="phone" data-tilt>
+      <div class="ph-notch"></div>
+      <div class="ph-screen" data-screen="timeline" data-lenis-prevent>
+        <div class="ph-bar"><span>07:58</span><span class="ph-sync mono live">Syncing</span></div>
+        <div class="ph-h"><small class="mono">Monday 16 November</small><h4>Today</h4></div>
+        <div class="ph-search"><svg viewBox="0 0 12 12"><circle cx="5" cy="5" r="3.6"/><path d="M8 8l3 3"/></svg><input type="text" placeholder="Search your life" aria-label="Search memories"></div>
+        <div class="ph-list" id="tl-list"></div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="app-row flip" id="s-strengthen">
+  <div class="wrap app-grid">
+    <div class="app-copy">
+      <span class="mono cy" data-reveal>02 — Strengthen</span>
+      <h2 class="h-lg" data-split>Decide tonight what tomorrow's you will care about.</h2>
+      <p class="lede" data-reveal>Five reinforcement slots a night. Switch a memory on and the Lattice will replay it through four slow-wave cycles while you sleep. Some slots may be reserved.</p>
+      <ul class="ticks" data-reveal><li>Works on facts, faces, skills and feelings</li><li>Wake up sure of things</li><li>Reinforcement cannot be felt</li></ul>
+    </div>
+    <div class="phone-wrap" data-reveal="scale"><div class="phone" data-tilt>
+      <div class="ph-notch"></div>
+      <div class="ph-screen" data-screen="strengthen" data-lenis-prevent>
+        <div class="ph-bar"><span>22:31</span><span class="mono">Sleep in 1 h 09</span></div>
+        <div class="ph-h"><small class="mono">Tonight's reinforcement</small><h4><span id="st-n">2</span> of 5 slots</h4></div>
+        <div class="st-slots" id="st-slots"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="ph-list" id="st-list"></div>
+        <p class="ph-note mono" id="st-note">Begins 23:40 · 4 cycles</p>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="app-row" id="s-memory">
+  <div class="wrap app-grid">
+    <div class="app-copy">
+      <span class="mono cy" data-reveal>03 — Recall and edit</span>
+      <h2 class="h-lg" data-split>Play it again. Or make it <span class="gl" data-alt="never happen.">quieter.</span></h2>
+      <p class="lede" data-reveal>Press play to step back inside a memory. Drag the intensity down if it's too much. If it should not have happened at all, there is a button for that too.</p>
+      <ul class="ticks" data-reveal><li>Full sensory replay, eyes open or closed</li><li>Soften, fade or delete in one tap</li><li>Linked memories are adjusted to match</li></ul>
+    </div>
+    <div class="phone-wrap" data-reveal="scale"><div class="phone" data-tilt>
+      <div class="ph-notch"></div>
+      <div class="ph-screen" data-screen="memory">
+        <div class="ph-bar"><span>07:58</span><span class="mono">Memory</span></div>
+        <div class="ph-h"><small class="mono" id="mm-meta">07:42 · Kitchen · 38 s</small><h4 id="mm-title">She laughed</h4></div>
+        <div class="mm-wave"><canvas id="mm-cv"></canvas></div>
+        <div class="mm-ctrl">
+          <button class="mm-play" id="mm-play" aria-label="Play memory"><svg viewBox="0 0 14 14"><path class="i-play" d="M3 1.5v11l9-5.5z"/><path class="i-pause" d="M3 2h3v10H3zM8 2h3v10H8z"/></svg></button>
+          <span class="mono" id="mm-time">0:00 / 0:38</span>
+          <span class="mono mm-val">Valence <b id="mm-val">94</b></span>
+        </div>
+        <label class="mm-slider"><span class="mono">Intensity</span><input type="range" id="mm-int" min="0" max="100" value="100" aria-label="Intensity"></label>
+        <div class="mm-chips" id="mm-chips"><button class="on">Sight</button><button class="on">Sound</button><button class="on">Touch</button><button class="on">Smell</button><button class="on">Thoughts</button></div>
+        <div class="mm-acts"><button data-act="soften">Soften</button><button data-act="fade">Fade</button><button data-act="delete" class="danger">Delete</button></div>
+        <div class="ph-sheet" id="mm-sheet" aria-hidden="true">
+          <h5>Delete this memory?</h5>
+          <p>It will be removed from your Lattice and from 2 other people who were present. You will not remember deleting it.</p>
+          <div><button data-sheet="cancel">Cancel</button><button data-sheet="ok" class="danger">Delete</button></div>
+        </div>
+        <div class="ph-toast" id="mm-toast"></div>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="app-row flip" id="s-guardian">
+  <div class="wrap app-grid">
+    <div class="app-copy">
+      <span class="mono cy" data-reveal>04 — Guardian access</span>
+      <h2 class="h-lg" data-split>Because you shouldn't have to manage yourself <span class="gl" data-alt="at all.">alone.</span></h2>
+      <p class="lede" data-reveal>A Guardian sees what you see and can act on your behalf. Parents use it for children. Employers use it for focus. Partners use it for peace of mind. You stay in control of their permissions.<sup class="ast">*</sup></p>
+      <p class="fine" data-reveal style="margin-top:18px">* Permission changes take effect once approved by your Guardian.</p>
+    </div>
+    <div class="phone-wrap" data-reveal="scale"><div class="phone" data-tilt>
+      <div class="ph-notch"></div>
+      <div class="ph-screen" data-screen="guardian" data-lenis-prevent>
+        <div class="ph-bar"><span>07:58</span><span class="mono">Settings</span></div>
+        <div class="ph-h"><small class="mono">Guardian access</small><h4>1 Guardian</h4></div>
+        <div class="gd-card"><div class="gd-av">MH</div><div><b>M. Halloran</b><small>Employer · since 14 Mar 2025</small></div><span class="mono live">Viewing</span></div>
+        <div class="ph-list" id="gd-list"></div>
+        <button class="gd-revoke" id="gd-revoke">Revoke Guardian access</button>
+        <p class="ph-note mono" id="gd-note">Last action by Guardian: 15:52 today</p>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<section class="section rule">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow" data-reveal>Also in the app</span><h2 class="h-lg" data-split>Small things you'll stop noticing.</h2></div>
+    <div class="grid-3" data-stagger="90">
+      <div class="card" data-reveal><span class="mono cy">Shared moments</span><h3 class="h-sm" style="margin:14px 0 10px">Compare notes</h3><p class="muted" style="font-size:14px">See how the same evening is stored in someone else. Where two memories disagree, the app suggests which to keep.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Mood floor</span><h3 class="h-sm" style="margin:14px 0 10px">Never below a 40</h3><p class="muted" style="font-size:14px">Set a minimum for how any day is allowed to feel in hindsight. Days that fall short are softened overnight.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Legacy</span><h3 class="h-sm" style="margin:14px 0 10px">Pass it on</h3><p class="muted" style="font-size:14px">Leave selected memories to someone you love. They'll remember them as their own.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Focus</span><h3 class="h-sm" style="margin:14px 0 10px">Work, uninterrupted</h3><p class="muted" style="font-size:14px">During hours set by your employer, personal memories are held back and delivered when your shift ends.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Sponsored recall</span><h3 class="h-sm" style="margin:14px 0 10px">Free tier</h3><p class="muted" style="font-size:14px">On the free plan, a small number of partner memories are placed among your own. They are clearly labelled in the ledger.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Motor Link</span><h3 class="h-sm" style="margin:14px 0 10px">Schedule your body</h3><p class="muted" style="font-size:14px">Book a run for 05:30 and sleep through it. <a class="link" href="/motor-link" style="font-size:14px">Learn more →</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta rule">
+  <div class="wrap cta-in">
+    <span class="eyebrow" data-reveal>The app is free with every Lattice</span>
+    <h2 class="h-xl" data-split>It works best when you stop checking it.</h2>
+    <div class="hero-cta" data-reveal><button class="btn solid" data-waitlist data-magnetic>Join the waitlist<span class="arr"></span></button><a class="btn" href="/motor-link" data-magnetic>Meet Motor Link<span class="arr"></span></a></div>
+  </div>
+</section>
+</main>
+<script src="/assets/vendor/lenis.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

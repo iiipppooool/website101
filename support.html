@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support the creator — Engramyx</title>
+<meta name="description" content="This site is made and kept running by one person. If you enjoyed it, you can leave a voluntary contribution.">
+<meta name="theme-color" content="#060809">
+<meta property="og:title" content="Support the creator — Engramyx">
+<meta property="og:description" content="This site is made and kept running by one person. If you enjoyed it, you can leave a voluntary contribution.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
+<noscript><style>html.is-loading .wipe{display:none}html.is-loading body{overflow:auto}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body data-page="support">
+<main>
+<section class="phead" style="padding-bottom:clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>Support the creator</span>
+    <h1 class="h-xl" data-split>Something worth remembering?</h1>
+    <p class="lede" data-reveal style="--d:450">This site is designed, written and kept online by one independent creator. If it stayed with you, you can leave a contribution towards the time and hosting behind it.</p>
+  </div>
+</section>
+<section class="section rule" style="padding-top:clamp(50px,7vw,90px)">
+  <div class="wrap two-col">
+    <div>
+      <ul class="ct" data-stagger="80">
+        <li data-reveal><span class="mono">What it is</span><b>A voluntary tip</b><p>It goes directly to the person who made this site. It is not a payment to Engramyx.</p></li>
+        <li data-reveal><span class="mono">What you get</span><b>Nothing, honestly</b><p>A contribution buys no product, service, device or place on any list. It is a thank-you and nothing more.</p></li>
+        <li data-reveal><span class="mono">How it's handled</span><b>Stripe Checkout</b><p>Payment is taken on Stripe's own secure page. Card details never touch this site.</p></li>
+      </ul>
+    </div>
+    <div class="don card" id="don" data-reveal>
+      <div class="don-form" id="don-form">
+        <span class="mono muted">Choose an amount</span>
+        <div class="don-amts" id="don-amts" role="group" aria-label="Amount">
+          <button data-a="3">£3</button><button data-a="5" class="on">£5</button><button data-a="10">£10</button><button data-a="25">£25</button>
+        </div>
+        <label class="field"><span class="lab">Or another amount (£1 to £500)</span><input type="number" id="don-custom" min="1" max="500" step="1" inputmode="numeric" placeholder="5"><span class="msg">Enter a whole amount between 1 and 500.</span></label>
+        <button class="btn solid" id="don-go" data-magnetic>Contribute <span id="don-lab">£5</span><span class="arr"></span></button>
+        <p class="fine" id="don-msg" style="margin-top:16px" role="status">One-off payment. You'll be taken to Stripe to complete it.</p>
+      </div>
+      <div class="don-thanks" id="don-thanks" hidden>
+        <div class="tick" style="width:44px;height:44px;border:1px solid var(--cyan);border-radius:50%;display:grid;place-items:center;margin-bottom:22px"><svg viewBox="0 0 16 12" style="width:16px;stroke:var(--cyan);fill:none;stroke-width:1.5"><path d="M1 6l5 5L15 1"/></svg></div>
+        <h3 class="h-md">Thank you. That means a lot.</h3>
+        <p class="muted" style="margin:14px 0 22px">Your contribution went through and a receipt is on its way from Stripe.</p>
+        <a class="btn" href="/">Back to the site<span class="arr"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<script src="/assets/vendor/lenis.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/support.js"></script>
+</body>
+</html>

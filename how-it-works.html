@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works — Engramyx</title>
+<meta name="description" content="Follow a single memory from the neuron that formed it to the Lattice, to the cloud, to your phone. It takes just over a second.">
+<meta name="theme-color" content="#060809">
+<meta property="og:title" content="How it works — Engramyx">
+<meta property="og:description" content="Follow a single memory from the neuron that formed it to the Lattice, to the cloud, to your phone. It takes just over a second.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
+<noscript><style>html.is-loading .wipe{display:none}html.is-loading body{overflow:auto}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body data-page="how-it-works">
+<main>
+<section class="phead">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>How it works</span>
+    <h1 class="h-xl" data-split>The journey of one memory.</h1>
+    <p class="lede" data-reveal style="--d:500">It is 07:42. Someone you love laughs at something you said. Here is what happens next, in the 1.2 seconds before you have even finished smiling.</p>
+  </div>
+</section>
+
+<section class="how" id="how" aria-label="Memory journey">
+  <div class="how-pin">
+    <svg id="how-svg" class="how-svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+    <div class="how-top wrap">
+      <span class="mono muted">Memory <span class="cy">#48,201,337</span></span>
+      <span class="mono tick-num" id="how-t">T + 0.000 s</span>
+    </div>
+    <div class="how-steps wrap">
+      <div class="how-stack" id="how-stack">
+        <article class="how-step on">
+          <span class="mono cy">01 — Formation</span>
+          <h2 class="h-md">A neuron fires.</h2>
+          <p>In the hippocampus, a few thousand cells fire together in a pattern that has never occurred before. That pattern is the memory. Left alone, most of it would be gone by Thursday.</p>
+          <ul class="mono"><li>Region <b>CA1, left hippocampus</b></li><li>Signal <b>−70 mV → +40 mV</b></li></ul>
+        </article>
+        <article class="how-step">
+          <span class="mono cy">02 — Capture</span>
+          <h2 class="h-md">The Lattice is already listening.</h2>
+          <p>1,024 threads, each a tenth the width of a hair, pick up the pattern as it happens. The EX-3 processor encodes it before the signal has reached the end of the axon.</p>
+          <ul class="mono"><li>Latency <b>0.011 s</b></li><li>Listening <b>24 hours a day</b></li></ul>
+        </article>
+        <article class="how-step">
+          <span class="mono cy">03 — Storage</span>
+          <h2 class="h-md">It leaves your head.</h2>
+          <p>The encoded memory is sent to the Engramyx cloud and written to three regions at once. It is encrypted so that only you, your Guardian, and Engramyx can open it.</p>
+          <ul class="mono"><li>Regions <b>Reykjavík · Zug · Singapore</b></li><li>Retention <b>Indefinite</b></li></ul>
+        </article>
+        <article class="how-step">
+          <span class="mono cy">04 — Access</span>
+          <h2 class="h-md">It appears in the app.</h2>
+          <p>Titled, tagged and scored for emotional weight. By the time you notice you are happy, the moment is already filed, searchable, and ready to replay.</p>
+          <ul class="mono"><li>Total time <b>1.204 s</b></li><li>Visible to <b>You + 1 Guardian</b></li></ul>
+        </article>
+        <article class="how-step ret">
+          <span class="mono" style="color:var(--red)">05 — Return path</span>
+          <h2 class="h-md">And the line runs <span class="gl" data-alt="into you.">both ways.</span></h2>
+          <p>Anything that travels up can travel down. Edits, reinforcements and instructions reach the Lattice by the same route, and the Lattice writes them back into the tissue. It is considerably faster in this direction.</p>
+          <ul class="mono"><li>Return latency <b>0.004 s</b></li><li>Confirmation <b>Not required</b></li></ul>
+        </article>
+      </div>
+    </div>
+    <ol class="how-rail" id="how-rail" aria-hidden="true">
+      <li class="on"><i></i>Neuron</li><li><i></i>Lattice</li><li><i></i>Cloud</li><li><i></i>App</li><li class="r"><i></i>Return</li>
+      <span class="how-fill" id="how-fill"></span>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap two-col">
+    <div class="sticky-col">
+      <span class="eyebrow" data-reveal>What is captured</span>
+      <h2 class="h-lg" data-split style="margin-top:22px">Everything. That was the brief.</h2>
+      <p class="lede" data-reveal style="margin-top:26px">The Lattice does not decide what is important. It keeps all of it and lets you, or someone you trust, decide later.</p>
+    </div>
+    <div>
+      <table class="spec" data-stagger="70">
+        <tr data-reveal><th>Sight</th><td>Full field, 140°</td><td class="mono cy">Captured</td></tr>
+        <tr data-reveal><th>Sound</th><td>Including what you weren't listening to</td><td class="mono cy">Captured</td></tr>
+        <tr data-reveal><th>Touch, taste, smell</th><td>At original intensity</td><td class="mono cy">Captured</td></tr>
+        <tr data-reveal><th>Emotion</th><td>Valence and arousal, scored 0–100</td><td class="mono cy">Captured</td></tr>
+        <tr data-reveal><th>Inner speech</th><td>The things you chose not to say</td><td class="mono cy">Captured</td></tr>
+        <tr data-reveal><th>Dreams</th><td>Stored separately; reviewed for quality</td><td class="mono cy">Captured</td></tr>
+        <tr data-reveal><th>Intentions</th><td>Decisions, up to 0.3 s before you are aware of them</td><td class="mono cy">Captured</td></tr>
+        <tr data-reveal><th>Private mode</th><td>Pause capture for up to 15 minutes a day<sup class="ast">*</sup></td><td class="mono muted">Planned</td></tr>
+      </table>
+      <p class="fine" style="margin-top:16px" data-reveal>* Private mode sessions are logged and visible to your Guardian. Capture continues during Private mode for safety purposes; playback is restricted.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section rule">
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow" data-reveal>Questions</span>
+      <h2 class="h-lg" data-split style="margin-top:22px">Asked often.</h2>
+    </div>
+    <div class="acc" data-single data-reveal>
+      <div class="acc-item"><button class="acc-q" aria-expanded="false">Does the procedure hurt?<i></i></button><div class="acc-a"><div><div class="in"><p>No. Implantation takes around 40 minutes under local anaesthetic and you go home the same day. Most people say they don't remember it at all.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-q" aria-expanded="false">Can I switch it off?<i></i></button><div class="acc-a"><div><div class="in"><p>The Lattice has no off state, because a gap in capture is a gap in you. You can pause playback at any time from the app.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-q" aria-expanded="false">Who can see my memories?<i></i></button><div class="acc-a"><div><div class="in"><p>You, and anyone you have appointed as a Guardian. Engramyx staff may review memories to maintain service quality, to comply with lawful requests, and to train our models.</p><p>If your Lattice was provided by an employer, school or insurer, they are your Guardian by default.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-q" aria-expanded="false">Will I know if a memory has been edited?<i></i></button><div class="acc-a"><div><div class="in"><p>A well-made edit is one you cannot detect. Every change is recorded in your consent ledger, which you can request in writing. Requests are themselves memories and may be edited.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-q" aria-expanded="false">Can the Lattice be removed?<i></i></button><div class="acc-a"><div><div class="in"><p>The shell can be removed in a short procedure. The thread mesh integrates with surrounding tissue within 90 days and is designed to remain in place. After removal the mesh stays active in a low-power state.</p></div></div></div></div>
+      <div class="acc-item"><button class="acc-q" aria-expanded="false">What happens to my memories if I cancel?<i></i></button><div class="acc-a"><div><div class="in"><p>Your stored memories remain safely in the Engramyx cloud. Your access to them ends at the close of your billing period.</p></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta rule">
+  <div class="wrap cta-in">
+    <span class="eyebrow" data-reveal>Next</span>
+    <h2 class="h-xl" data-split>See what you'll hold in your hand.</h2>
+    <div class="hero-cta" data-reveal><a class="btn solid" href="/app" data-magnetic>Explore the app<span class="arr"></span></a><button class="btn" data-waitlist data-magnetic>Join the waitlist<span class="arr"></span></button></div>
+  </div>
+</section>
+</main>
+<script src="/assets/vendor/lenis.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/how.js"></script>
+</body>
+</html>

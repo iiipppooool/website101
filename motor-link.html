@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motor Link — Engramyx</title>
+<meta name="description" content="Motor Link lets your Lattice move for you. Scheduled exercise, assisted routines and remote sessions, with no effort required.">
+<meta name="theme-color" content="#f5f6f6">
+<meta property="og:title" content="Motor Link — Engramyx">
+<meta property="og:description" content="Motor Link lets your Lattice move for you. Scheduled exercise, assisted routines and remote sessions, with no effort required.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/pages.css">
+<noscript><style>html.is-loading .wipe{display:none}html.is-loading body{overflow:auto}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body data-page="motor-link" class="theme-light">
+<main>
+<section class="phead ml-head">
+  <div class="wrap">
+    <span class="eyebrow" data-reveal>Motor Link &nbsp;·&nbsp; Included with Generation 3</span>
+    <h1 class="h-xl" data-split>Hands-free <span class="gl" data-alt="obedience.">living.</span></h1>
+    <p class="lede" data-reveal style="--d:500">Until now the Lattice only listened. Motor Link lets it speak. The same threads that read your motor cortex can drive it, so your body can get on with things while you rest, sleep, or simply aren't needed.</p>
+    <div class="hero-cta" data-reveal style="--d:650"><button class="btn solid" data-waitlist data-magnetic>Join the waitlist<span class="arr"></span></button><a class="btn" href="#session" data-magnetic>Try a remote session<span class="arr"></span></a></div>
+  </div>
+  <div class="wrap ml-strip" data-stagger="100">
+    <div data-reveal><b data-count="647">0</b><span>Addressable muscles</span></div>
+    <div data-reveal><b data-count="4" data-suf=" ms">0</b><span>Command to contraction</span></div>
+    <div data-reveal><b data-count="100" data-suf="%">0</b><span>Of sessions completed as instructed</span></div>
+    <div data-reveal><b data-count="0">0</b><span>Effort required from you</span></div>
+  </div>
+</section>
+
+<section class="section rule" id="anatomy">
+  <div class="wrap ml-anat">
+    <div>
+      <span class="eyebrow" data-reveal>Coverage</span>
+      <h2 class="h-lg" data-split style="margin:22px 0 26px">Every muscle group. Individually addressable.</h2>
+      <p class="lede" data-reveal>Select a group to see what Motor Link can reach. Voluntary control is restored automatically when a session ends.<sup class="ast">1</sup></p>
+      <ul class="mg" id="mg-list" data-reveal></ul>
+    </div>
+    <div class="ml-fig" data-reveal="fade">
+      <canvas id="rig-a" aria-label="Rotating body diagram with highlighted muscle groups" role="img"></canvas>
+      <div class="ml-read mono">
+        <div><span>Group</span><b id="rd-name">Deltoids</b></div>
+        <div><span>Motor units</span><b id="rd-units" class="tick-num">774</b></div>
+        <div><span>Authority</span><b>Guardian</b></div>
+      </div>
+      <span class="ml-corner c-tl"></span><span class="ml-corner c-tr"></span><span class="ml-corner c-bl"></span><span class="ml-corner c-br"></span>
+    </div>
+  </div>
+</section>
+
+<section class="section rule">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow" data-reveal>What people use it for</span><h2 class="h-lg" data-split>Your body, finally on a schedule.</h2></div>
+    <div class="grid-3" data-stagger="90">
+      <div class="card" data-reveal><span class="mono cy">05:30 daily</span><h3 class="h-sm" style="margin:14px 0 10px">Never miss a workout again</h3><p class="muted" style="font-size:14px">Book the run. Motor Link takes you out, brings you back and puts you to bed. You wake up fitter and slightly out of breath.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Autopilot</span><h3 class="h-sm" style="margin:14px 0 10px">Sleep through the commute</h3><p class="muted" style="font-size:14px">Dressed, out of the door and at your desk by nine. Your first memory of the day can be the one you choose.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Form assist</span><h3 class="h-sm" style="margin:14px 0 10px">Perfect technique, borrowed</h3><p class="muted" style="font-size:14px">Download a concert pianist's hands or a surgeon's. Your muscles perform. You are welcome to watch.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Family</span><h3 class="h-sm" style="margin:14px 0 10px">Bedtime without the argument</h3><p class="muted" style="font-size:14px">Teeth, homework, lights out. Parents set the routine once and their children simply follow it.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Workforce</span><h3 class="h-sm" style="margin:14px 0 10px">A second shift without a second you</h3><p class="muted" style="font-size:14px">Employers can schedule physical tasks outside contracted hours. Employees report feeling well rested, if a little sore.</p></div>
+      <div class="card" data-reveal><span class="mono cy">Care</span><h3 class="h-sm" style="margin:14px 0 10px">Assisted <span class="gl" data-alt="compliance">cooperation</span></h3><p class="muted" style="font-size:14px">For those who cannot be relied upon to attend appointments, take medication or remain where they are.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section rule" id="session">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow red" data-reveal>Remote session &nbsp;·&nbsp; Demonstration</span><h2 class="h-lg" data-split>Take someone for a walk.</h2><p class="lede" data-reveal style="margin-top:24px">This is the Guardian console. Choose a limb and move the control, or run a programme. The subject does not need to be awake.</p></div>
+    <div class="rs" data-reveal>
+      <div class="rs-view">
+        <div class="rs-hud mono"><span class="live red">Session live</span><span>Subject EX-0214-7731</span><span id="rs-clock" class="tick-num">00:00:00</span></div>
+        <canvas id="rig-b" aria-label="Figure controlled by the remote session console" role="img"></canvas>
+        <div class="rs-vitals mono">
+          <div><span>Heart rate</span><b id="rs-hr" class="tick-num">54 bpm</b></div>
+          <div><span>Awareness</span><b>Suppressed</b></div>
+          <div><span>Resistance</span><b id="rs-res" class="tick-num">0.0%</b></div>
+        </div>
+      </div>
+      <div class="rs-panel">
+        <div class="rs-block">
+          <span class="mono lab">Limb</span>
+          <div class="rs-seg" id="rs-limb" role="group" aria-label="Limb"><button data-l="ra" class="on">Right arm</button><button data-l="la">Left arm</button><button data-l="rl">Right leg</button><button data-l="ll">Left leg</button></div>
+        </div>
+        <div class="rs-block rs-joy-row">
+          <div class="joy" id="joy" tabindex="0" role="slider" aria-label="Limb control. Drag, or use the arrow keys." aria-valuetext="centre" data-hover><i class="joy-x"></i><i class="joy-y"></i><b id="joy-k"></b></div>
+          <div class="rs-axes mono"><div><span>Abduct</span><b id="ax-a" class="tick-num">0°</b></div><div><span>Flex</span><b id="ax-f" class="tick-num">0°</b></div><div><span>Force</span><b id="ax-n" class="tick-num">0 N</b></div></div>
+        </div>
+        <div class="rs-block">
+          <span class="mono lab">Programmes</span>
+          <div class="rs-seg" id="rs-prog" role="group" aria-label="Programme"><button data-p="wave">Wave</button><button data-p="squat">Squat</button><button data-p="walk">Walk</button><button data-p="stand" class="on">Stand</button></div>
+        </div>
+        <div class="rs-block">
+          <span class="mono lab">Command log</span>
+          <ol class="rs-log mono" id="rs-log" aria-live="off"></ol>
+        </div>
+        <button class="rs-over" id="rs-over"><span>Subject override</span><small class="mono" id="rs-over-n">Unavailable during session</small></button>
+      </div>
+    </div>
+    <p class="fine" style="margin-top:18px" data-reveal>Demonstration only. In a live session the subject retains full sensation unless Awareness is set to Suppressed, which is the default.</p>
+  </div>
+</section>
+
+<section class="section rule">
+  <div class="wrap two-col">
+    <div class="sticky-col">
+      <span class="eyebrow" data-reveal>Safeguards</span>
+      <h2 class="h-lg" data-split style="margin-top:22px">Designed so that nothing can go wrong for the operator.</h2>
+    </div>
+    <div>
+      <ol class="sg" data-stagger="80">
+        <li data-reveal><b>Consent is collected once</b><span>At implantation, as part of the standard terms. It does not need to be asked for again.</span></li>
+        <li data-reveal><b>Sessions end when the operator ends them</b><span>A session cannot be interrupted by the subject, by pain, or by loss of connection. On disconnection the last instruction repeats.<sup class="ast">2</sup></span></li>
+        <li data-reveal><b>No memory of the session is required</b><span>By default, sessions are excluded from capture. Soreness, injuries and changes of location are explained by a short covering memory.</span></li>
+        <li data-reveal><b>Force limits</b><span>Motor Link will not exceed the structural tolerance of the subject's joints unless the operator selects Priority mode.</span></li>
+        <li data-reveal><b>Subject override</b><span>A way for the subject to stop a session is on our roadmap. We have no date for it.</span></li>
+      </ol>
+      <p class="fine" style="margin-top:22px" data-reveal><sup>1</sup> Restoration may be delayed where a session is paused rather than ended. Paused sessions have no time limit. &nbsp; <sup>2</sup> Walking programmes continue in the last heading until signal is restored. Engramyx is not liable for where the subject is found.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section cta rule">
+  <div class="wrap cta-in">
+    <span class="eyebrow" data-reveal>Enabled by default on all Generation 3 implants</span>
+    <h2 class="h-xl" data-split>Sit back. We'll take it from <span class="gl" data-alt="you.">here.</span></h2>
+    <div class="hero-cta" data-reveal><button class="btn solid" data-waitlist data-magnetic>Join the waitlist<span class="arr"></span></button><a class="btn" href="/safety" data-magnetic>Safety &amp; Ethics<span class="arr"></span></a></div>
+  </div>
+</section>
+</main>
+<script src="/assets/vendor/lenis.min.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/motor.js"></script>
+</body>
+</html>
