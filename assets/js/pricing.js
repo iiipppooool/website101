@@ -2,7 +2,7 @@
 (() => {
   const { RM, $, $$ } = EX;
   const bill = $('#bill'), btns = $$('button', bill), pill = $('i', bill), prices = $$('[data-price]'), units = $$('[data-unit]'), fine = $('#bill-fine');
-  const UNIT = ['per month', 'per month, billed yearly', 'paid in memories'];
+  const UNIT = ['per month', 'per month, billed yearly', 'with Research Participation'];
   const FINE = ['* A Guardian is required on all paid plans. Prices may change. You will be reminded that you agreed.', '* Annual plans renew automatically. Renewal reminders are delivered as a feeling that everything is in order.', '* Lifetime plans grant Engramyx a perpetual licence to your memories and reasonable use of your time. They cannot be cancelled.'];
   const move = (b) => { pill.style.width = b.offsetWidth + 'px'; pill.style.transform = `translateX(${b.offsetLeft}px)`; };
   const set = (k) => {

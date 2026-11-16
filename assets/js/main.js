@@ -60,7 +60,7 @@
     <div class="footer-word" data-parallax="-0.06" aria-hidden="true">Engramyx</div>
     <div class="footer-bot">
       <p class="fine">&copy; 2026 Engramyx Neurotechnologies AG, Zug. Lattice, Motor Link and Guardian are trademarks of Engramyx. The Lattice is a Class III implantable device. Memories are retained for the lifetime of the account and for a reasonable period thereafter. Engramyx may access stored memories to improve the service.</p>
-      <p class="fine"><a href="/safety">Privacy</a> &nbsp;·&nbsp; <a href="/safety#consent">Consent ledger</a> &nbsp;·&nbsp; <a href="/contact">Contact</a> &nbsp;·&nbsp; <a href="/support">Support the creator</a></p>
+      <p class="fine"><a href="/legal#privacy">Privacy</a> &nbsp;·&nbsp; <a href="/legal#terms">Terms</a> &nbsp;·&nbsp; <a href="/safety#consent">Consent ledger</a> &nbsp;·&nbsp; <a href="/contact">Contact</a> &nbsp;·&nbsp; <a href="/support">Support the creator</a></p>
     </div>
   </div></footer>`;
 
@@ -377,14 +377,14 @@
   /* ---------- live activity feed ---------- */
   if (['home', 'app', 'pricing'].includes(page) && innerWidth > 640) {
     const PLACES = ['Leeds', 'Zug', 'Reykjavík', 'Singapore', 'Lyon', 'Toronto', 'Osaka', 'Bristol', 'Malmö', 'Austin', 'Cork', 'Rotterdam', 'Perth', 'Glasgow'];
-    const EVENTS = [['strengthened a memory of their wedding', 0], ['replayed a childhood summer', 0], ['joined the waitlist', 0], ['softened last Tuesday', 0], ['deleted an argument', 0], ['had a memory deleted by their Guardian', 1], ['was taken for a run while asleep', 1], ['tried to revoke Guardian access', 1], ['stopped asking about it', 1], ['forgot they were on the waitlist', 0], ['completed a second shift, unaware', 1]];
+    const EVENTS = [['strengthened a memory of their wedding', 0], ['replayed a childhood summer', 0], ['joined the waitlist', 0], ['softened last Tuesday', 0], ['deleted an argument', 0], ['completed suitability screening', 0], ['upgraded to Family', 0], ['had a memory updated by their Guardian', 1], ['completed a scheduled run, asleep', 1], ['withdrew a revocation request', 1]];
     document.body.insertAdjacentHTML('beforeend', '<div class="feed" aria-hidden="true"><i></i><p></p><button tabindex="-1" aria-label="Dismiss">×</button></div>');
     const f = $('.feed'), txt = $('p', f); let on = true, n = 0;
     $('button', f).addEventListener('click', () => { on = false; f.classList.remove('show'); });
     const next = () => {
       if (!on) return;
       if (!document.hidden && !modal.classList.contains('open')) {
-        const e = EVENTS[n < 3 ? Math.floor(Math.random() * 5) : Math.floor(Math.random() * EVENTS.length)]; n++;
+        const e = EVENTS[n > 3 && Math.random() < 0.18 ? 7 + Math.floor(Math.random() * 3) : Math.floor(Math.random() * 7)]; n++;
         txt.innerHTML = `<b>Someone in ${PLACES[Math.floor(Math.random() * PLACES.length)]}</b> ${e[0]}<small>${1 + Math.floor(Math.random() * 50)} seconds ago</small>`;
         f.classList.toggle('red', !!e[1]); f.classList.add('show');
         setTimeout(() => f.classList.remove('show'), 5200);
