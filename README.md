@@ -8,6 +8,7 @@ Multi-page marketing site. Static HTML, CSS and vanilla JavaScript: no build ste
 | --- | --- |
 | `/` | `index.html` |
 | `/how-it-works` | `how-it-works.html` |
+| `/products` | `products.html` (four models with technical drawings, placement diagram, accessories, services) |
 | `/app` | `app.html` |
 | `/motor-link` | `motor-link.html` |
 | `/safety` | `safety.html` |
@@ -81,3 +82,7 @@ To show a real sponsor, add an entry to the `SPONSORS` array near the top of `as
 ```
 
 Sponsors play first in the advert player on `/partners` and appear in the footer of every page, labelled "Sponsored". Keep that label: UK advertising rules require paid placements to be identifiable as adverts.
+
+## SEO
+
+Every public page has a unique title and description, a canonical URL on `https://engramyx.org`, Open Graph and Twitter card tags, and a share image (`assets/og.png`). `sitemap.xml` and `robots.txt` are at the root; `/admin`, `/api` and `/site-4` are excluded. After deploying, add the site in Google Search Console and submit `https://engramyx.org/sitemap.xml`. If the domain changes, search and replace `https://engramyx.org` in the HTML files, `sitemap.xml` and `robots.txt`.

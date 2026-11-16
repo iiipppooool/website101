@@ -631,3 +631,45 @@
 .lg-steps li.done { color: var(--text); } .lg-steps li.done::before { background: var(--cyan); border-color: var(--cyan); }
 .lg-steps li.now::before { border-color: var(--cyan); animation: pulse 1.4s infinite; }
 .lg-steps small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: var(--faint); }
+
+/* ================= PRODUCTS ================= */
+.md-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 18px; }
+.md-tabs button { text-align: left; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; transition: border-color 0.3s, background 0.3s, transform 0.4s var(--ease); }
+.md-tabs button:hover { border-color: var(--line-2); transform: translateY(-2px); }
+.md-tabs button.on { border-color: var(--cyan); background: rgba(165, 238, 248, 0.05); }
+.md-tabs b { display: block; font-family: var(--head); font-weight: 500; font-size: 19px; letter-spacing: -0.02em; }
+.md-tabs small { font-size: 12px; color: var(--muted); }
+.md { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 18px; align-items: start; }
+.md-draw { padding: 0; } .md-draw:hover { transform: none; }
+.md-hud { display: flex; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+#md-svg { width: 100%; height: auto; color: var(--text); }
+#md-svg .ln * { fill-opacity: 0.08; } #md-svg .ln rect, #md-svg .ln path { fill: none; }
+#md-svg .ln rect[fill-opacity], #md-svg .ln circle { fill-opacity: 1; }
+#md-svg .dm path { stroke: #86939a; fill: none; } #md-svg .dm text, #md-svg .lb { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; fill: #86939a; }
+#md-svg .hs { cursor: pointer; outline: none; } #md-svg .hs text { font-family: var(--mono); font-size: 11px; fill: #e8eef0; pointer-events: none; }
+#md-svg .hb { fill: #0a0d0f; stroke: rgba(255, 255, 255, 0.4); transition: fill 0.25s, stroke 0.25s; }
+#md-svg .hs:hover .hb, #md-svg .hs.on .hb, #md-svg .hs:focus-visible .hb { fill: var(--cyan); stroke: var(--cyan); }
+#md-svg .hs:hover text, #md-svg .hs.on text, #md-svg .hs:focus-visible text { fill: #060809; }
+.md-tip { padding: 16px 20px; border-top: 1px solid var(--line); font-size: 12px; line-height: 1.6; color: var(--muted); min-height: 5.2em; letter-spacing: 0.02em; }
+.md-tip b { font-weight: 400; color: var(--cyan); margin-right: 8px; text-transform: uppercase; letter-spacing: 0.1em; font-size: 10.5px; }
+.md-tip.r b { color: var(--red); }
+.md-info { padding: 10px 0 0 clamp(0px, 2vw, 26px); }
+.md-info h2 { margin: 14px 0 18px; font-size: clamp(34px, 4vw, 56px); }
+.md-info .res-dl { margin: 28px 0 30px; max-width: none; }
+.md-info .res-dl dd { max-width: 60%; }
+@media (max-width: 960px) { .md { grid-template-columns: 1fr; } .md-tabs { grid-template-columns: 1fr 1fr; } .md-info { padding-left: 0; } }
+.pl-seg { display: inline-flex; flex-wrap: wrap; gap: 6px; margin: 34px 0 6px; }
+.pl-seg button { padding: 10px 16px; border: 1px solid var(--line-2); border-radius: 100px; font-size: 13px; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+.pl-seg button:hover { border-color: var(--text); } .pl-seg button.on { background: var(--text); color: var(--bg); border-color: var(--text); }
+.pl-fig { padding: clamp(10px, 2vw, 26px); } .pl-fig:hover { transform: none; } .pl-fig svg { width: 100%; height: auto; max-height: 76vh; }
+#pl-svg .thr { fill: none; stroke-width: 0.9; stroke-opacity: 0.75; stroke-dasharray: 3 5; animation: flow 1.6s linear infinite; }
+#pl-svg .g-mot .thr { animation-direction: reverse; }
+@keyframes flow { to { stroke-dashoffset: -16; } }
+#pl-svg .g-mem, #pl-svg .g-mot { transition: opacity 0.5s; }
+.pl-fig[data-k="mem"] .g-mot, .pl-fig[data-k="mot"] .g-mem { opacity: 0.08; }
+#pl-svg .lbl path { fill: none; stroke: rgba(255, 255, 255, 0.3); } #pl-svg .lbl text { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; fill: #86939a; }
+.acc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.ac svg { width: 100%; height: 110px; margin-bottom: 20px; color: var(--text); }
+.ac h3 { margin: 10px 0 8px; } .ac p { font-size: 14px; }
+@media (max-width: 1000px) { .acc-grid { grid-template-columns: 1fr 1fr; } } @media (max-width: 560px) { .acc-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { #pl-svg .thr { animation: none; } }

@@ -10,16 +10,17 @@
 
   const PAGES = [
     ['how-it-works', 'How it works'],
+    ['products', 'Products'],
     ['app', 'The App'],
     ['motor-link', 'Motor Link'],
     ['pricing', 'Pricing'],
-    ['safety', 'Safety & Ethics'],
     ['about', 'Company'],
   ];
   // Real sponsors: add entries here and they play first on /partners and appear in the footer, marked as sponsored.
   // { name: 'Brand', tagline: 'One line about them', url: 'https://example.com', text: 'The advert copy shown in the player.' }
   const SPONSORS = [];
   const MORE = [
+    ['safety', 'Safety & Ethics', 'Principles and the consent ledger'],
     ['partners', 'For business', 'Advertise with Engramyx'],
     ['screening', 'Suitability screening', 'Ten questions, two minutes'],
     ['guardian', 'Guardian Portal', 'Sign in to someone in your care'],
@@ -59,7 +60,7 @@
         </form>
       </div>
       <div><h5>Product</h5><ul>
-        <li><a href="/how-it-works">How it works</a></li><li><a href="/app">The App</a></li><li><a href="/motor-link">Motor Link</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/screening">Suitability screening</a></li><li><a href="#" data-waitlist>Waitlist</a></li>
+        <li><a href="/how-it-works">How it works</a></li><li><a href="/products">Products</a></li><li><a href="/app">The App</a></li><li><a href="/motor-link">Motor Link</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/screening">Suitability screening</a></li><li><a href="#" data-waitlist>Waitlist</a></li>
       </ul></div>
       <div><h5>Company</h5><ul>
         <li><a href="/about">About</a></li><li><a href="/about#roles">Careers</a></li><li><a href="/safety">Safety &amp; Ethics</a></li><li><a href="/partners">For business</a></li><li><a href="/login">Log in</a></li><li><a href="/guardian">Guardian Portal</a></li><li><a href="/site-4">Site 4</a></li><li><a href="/contact">Contact</a></li>
@@ -74,7 +75,7 @@
     <div class="footer-word" data-parallax="-0.06" aria-hidden="true">Engramyx</div>
     <div class="footer-bot">
       <p class="fine">&copy; 2026 Engramyx Neurotechnologies AG, Zug. Lattice, Motor Link and Guardian are trademarks of Engramyx. The Lattice is an investigational device and is not yet approved for general sale. Memories are retained for the lifetime of the account and for a reasonable period thereafter. Engramyx may access stored memories to improve the service.</p>
-      <p class="fine"><a href="/legal#privacy">Privacy</a> &nbsp;·&nbsp; <a href="/legal#terms">Terms</a> &nbsp;·&nbsp; <a href="/safety#consent">Consent ledger</a> &nbsp;·&nbsp; <a href="/contact">Contact</a> &nbsp;·&nbsp; <a href="/support">Support the creator</a></p>
+      <p class="fine"><a href="/legal#privacy">Privacy</a> &nbsp;·&nbsp; <a href="/legal#terms">Terms</a> &nbsp;·&nbsp; <a href="/safety#consent">Consent ledger</a> &nbsp;·&nbsp; <a href="/contact">Contact</a> &nbsp;·&nbsp; <a href="/support">Support the creator</a> &nbsp;·&nbsp; <a href="/admin">Staff</a></p>
     </div>
   </div></footer>`;
 
@@ -101,7 +102,7 @@
         <div class="form-done">
           <div class="tick"><svg viewBox="0 0 16 12"><path d="M1 6l5 5L15 1"/></svg></div>
           <h3 class="h-md">You're on the list<span data-out="first"></span>.</h3>
-          <p class="muted" style="margin:14px 0 22px">Your position is <b class="cy tick-num" data-out="pos"></b>. A placement coordinator will contact you when a suite becomes available. You do not need to do anything further.</p>
+          <p class="muted" style="margin:14px 0 22px">Your position is <b class="cy tick-num" data-out="pos"></b>. You do not need to do anything further.</p>
           <p class="mono muted">Reference <span data-out="ref"></span></p>
         </div>
       </form>
@@ -321,7 +322,7 @@
 
   /* ---------- forms ---------- */
   const refCode = () => 'EX-' + Math.random().toString(36).slice(2, 6).toUpperCase() + '-' + String(Math.floor(1000 + Math.random() * 9000));
-  const NOTE = 'Engramyx is a speculative design project. There is no real product or waitlist. What you submit is stored so the creator can count sign-ups, and is not shared or sold.';
+  const NOTE = 'Your details are stored to count registrations and are never shared or sold. See the <a href="/legal#p0">privacy notice</a>.';
   // saves a submission through /api/submit; resolves 'saved', 'demo' (storage not connected yet) or 'failed'
   const save = async (formName, data) => {
     try {
