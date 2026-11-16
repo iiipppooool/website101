@@ -19,6 +19,7 @@
     msg.textContent = tries >= 3 ? 'No match. Serials are printed on the device. One of ours is shown on this website.' : tries === 2 ? 'No match. If that serial is your own, you do not have access to it.' : 'No Lattice is registered to that serial.';
     field.classList.add('err');
   });
+  $('#gp-demo').addEventListener('click', () => { serial.value = 'EX-0214-7731'; form.requestSubmit(); });
   $('#gp-out').addEventListener('click', () => { dash.hidden = true; login.hidden = false; serial.value = ''; try { sessionStorage.removeItem('ex_gp'); } catch (_) {} });
   try { if (sessionStorage.getItem('ex_gp')) open(); } catch (_) {}
 

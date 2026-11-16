@@ -38,6 +38,10 @@
     await print(fn ? fn() : [`  unknown command: ${esc(cmd)}`, ['d', '  type help']]);
     await print(['']);
   };
+  // command buttons, so nothing has to be typed
+  const keys = $('#term-keys');
+  keys.innerHTML = ['help', 'status', 'whoami', 'logs', 'voss', 'subject', 'motor', 'revoke', 'clear'].map((c) => `<button type="button" data-c="${c}">${c}</button>`).join('');
+  keys.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b && !busy) run(b.dataset.c); });
   form.addEventListener('submit', (e) => { e.preventDefault(); if (busy) return; const v = input.value; input.value = ''; run(v); });
   document.addEventListener('click', (e) => { if (!e.target.closest('a') && !getSelection().toString()) input.focus({ preventScroll: true }); });
   print([['d', 'ENGRAMYX NEUROTECHNOLOGIES AG · INTERNAL CONSOLE · SITE 4'], ['d', 'Unauthorised access is recorded against your profile.'], '', ['r', 'You are not on the access list.'], 'Session opened anyway. We would like to see what you do.', '', 'Type <span class="c">help</span>.', ''], 120).then(() => input.focus({ preventScroll: true }));

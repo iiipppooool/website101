@@ -577,3 +577,20 @@
 .legal article ul { list-style: disc; padding-left: 20px; margin-top: 8px; }
 .legal .upd { font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: 0.06em; }
 @media (max-width: 800px) { .legal { grid-template-columns: 1fr; } .legal nav { display: none; } }
+
+/* explore grid */
+.xp .card { display: flex; flex-direction: column; min-height: 260px; }
+.xp .card h3 { margin: 14px 0 10px; }
+.xp .card p { font-size: 14px; margin-bottom: 26px; }
+.xp .card .btn { margin-top: auto; align-self: flex-start; }
+.xp .card:hover .btn { color: var(--bg); border-color: var(--text); }
+.xp .card:hover .btn::before { transform: translateY(0); }
+.xp .card:hover .btn .arr::before { transform: translateX(140%); }
+.xp .card:hover .btn .arr::after { transform: translateX(0); }
+.xp-r { border-color: rgba(255, 64, 52, 0.28); }
+/* way back out of the console */
+.term-head a { color: var(--muted); border: 1px solid var(--line-2); border-radius: 100px; padding: 5px 12px; letter-spacing: 0.1em; transition: color 0.3s, border-color 0.3s; }
+.term-head a:hover { color: var(--text); border-color: var(--text); }
+.term-keys { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; max-width: 92ch; }
+.term-keys button { font: inherit; font-size: 11px; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--line-2); border-radius: 6px; padding: 6px 11px; transition: color 0.25s, border-color 0.25s, background 0.25s; }
+.term-keys button:hover { color: var(--cyan); border-color: var(--cyan); background: rgba(165, 238, 248, 0.06); }

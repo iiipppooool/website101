@@ -16,20 +16,28 @@
     ['safety', 'Safety & Ethics'],
     ['about', 'Company'],
   ];
+  const MORE = [
+    ['screening', 'Suitability screening', 'Ten questions, two minutes'],
+    ['guardian', 'Guardian Portal', 'Sign in to someone in your care'],
+    ['site-4', 'Site 4', 'Internal console'],
+    ['legal', 'Privacy and terms', 'The agreements'],
+    ['contact', 'Contact', 'Talk to the team'],
+    ['support', 'Support the creator', 'Leave a contribution'],
+  ];
   const LOGO = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 3h14M3 10h8M3 17h14M3 3v14"/><circle cx="15" cy="10" r="1.8" fill="currentColor" stroke="none"/></svg>';
 
   /* ---------- chrome ---------- */
   const navHTML = `
   <header class="nav" id="nav"><div class="wrap nav-in">
     <a class="logo" href="/" aria-label="Engramyx home">${LOGO}<span>Engramyx</span></a>
-    <nav class="nav-links" aria-label="Primary">${PAGES.map(([h, l]) => `<a href="/${h}" class="${page === h ? 'on' : ''}">${l}</a>`).join('')}</nav>
+    <nav class="nav-links" aria-label="Primary">${PAGES.map(([h, l]) => `<a href="/${h}" class="${page === h ? 'on' : ''}">${l}</a>`).join('')}<div class="more"><button class="more-btn ${MORE.some(([h]) => h === page) ? 'on' : ''}" aria-expanded="false" aria-haspopup="true">More<i></i></button><div class="more-panel">${MORE.map(([h, l, d]) => `<a href="/${h}" class="${h === 'site-4' ? 'r' : ''}"><b>${l}</b><small>${d}</small></a>`).join('')}</div></div></nav>
     <div class="nav-right">
       <button class="btn sm solid" data-waitlist data-magnetic>Join the waitlist</button>
       <button class="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
     </div>
   </div></header>
   <div class="mmenu" aria-hidden="true">
-    <div>${[['', 'Home'], ...PAGES, ['screening', 'Screening'], ['contact', 'Contact']].map(([h, l], i) => `<a class="big" style="--i:${i}" href="/${h}">${l}</a>`).join('')}</div>
+    <div>${[['', 'Home'], ...PAGES, ...MORE.map(([h, l]) => [h, l])].map(([h, l], i) => `<a class="big" style="--i:${i}" href="/${h}">${l}</a>`).join('')}</div>
     <button class="btn solid" data-waitlist style="align-self:flex-start;margin-top:30px">Join the waitlist<span class="arr"></span></button>
   </div>`;
 
@@ -49,7 +57,7 @@
         <li><a href="/how-it-works">How it works</a></li><li><a href="/app">The App</a></li><li><a href="/motor-link">Motor Link</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/screening">Suitability screening</a></li><li><a href="#" data-waitlist>Waitlist</a></li>
       </ul></div>
       <div><h5>Company</h5><ul>
-        <li><a href="/about">About</a></li><li><a href="/about#roles">Careers</a></li><li><a href="/safety">Safety &amp; Ethics</a></li><li><a href="/guardian">Guardian Portal</a></li><li><a href="/contact">Contact</a></li>
+        <li><a href="/about">About</a></li><li><a href="/about#roles">Careers</a></li><li><a href="/safety">Safety &amp; Ethics</a></li><li><a href="/guardian">Guardian Portal</a></li><li><a href="/site-4">Site 4</a></li><li><a href="/contact">Contact</a></li>
       </ul></div>
       <div><h5>Network status</h5><ul>
         <li class="mono muted"><span class="live">All regions nominal</span></li>
@@ -136,6 +144,13 @@
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+
+  /* ---------- "More" dropdown ---------- */
+  const more = $('.more'), moreBtn = $('.more-btn');
+  const setMore = (o) => { more.classList.toggle('open', o); moreBtn.setAttribute('aria-expanded', o); };
+  moreBtn.addEventListener('click', (e) => { e.stopPropagation(); setMore(!more.classList.contains('open')); });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.more')) setMore(false); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') setMore(false); });
 
   /* ---------- mobile menu ---------- */
   const burger = $('.burger');
