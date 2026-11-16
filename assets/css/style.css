@@ -202,6 +202,11 @@ sup.ast { color: var(--muted); font-size: 0.5em; vertical-align: super; margin-l
   background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%) 0 0 / 220% 100%;
   animation: shimmer 1.1s linear infinite;
 }
+.form-note { margin-top: 18px; max-width: 62ch; }
+.inline-form + .form-fail + .form-note, .inline-form + .form-fail { max-width: 520px; }
+.form-fail { margin-top: 14px; font-size: 13px; color: var(--red); }
+.form-fail[hidden] { display: none; }
+.form.done .form-note, .form.done .form-fail { display: none; }
 .form-done { display: none; }
 .form.done > *:not(.form-done) { display: none; }
 .form.done .form-done { display: block; animation: rise 0.9s var(--ease) both; }

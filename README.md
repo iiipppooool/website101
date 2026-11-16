@@ -40,6 +40,26 @@ Import the repository in Vercel. Framework preset: **Other**. No build command, 
 
 Until the key is set, the page shows "Donations are not switched on yet."
 
-## Forms
+## Forms and sign-up counts
 
-The waitlist, contact, concern, application and newsletter forms validate in the browser and show a confirmation, but do not send data anywhere. Submissions are only written to the visitor's own `localStorage`. To collect real submissions, post the form data to a backend in the `submit` handler in `assets/js/main.js`.
+Every form (waitlist, newsletter, contact, concern, job application) posts to `api/submit.js`, which saves the submission to a Redis database. Each form shows a short note saying the project is not a real product and what the data is used for.
+
+Set-up, once:
+
+1. In Vercel: Project > Storage > Create Database > **Upstash for Redis** (free tier), and connect it to this project. That adds the `KV_REST_API_URL` and `KV_REST_API_TOKEN` environment variables for you.
+2. Add an `ADMIN_KEY` environment variable: a long random password of your own (12+ characters).
+3. Redeploy.
+
+Then open `/admin`, enter the admin key, and you get totals per form, a table of submissions and a CSV download. The page is not linked from the site.
+
+Until the database is connected, forms still show their confirmation but nothing is saved.
+
+What is stored: the form fields, the time, and the visitor's country. IP addresses are not stored.
+
+## Analytics
+
+Each page loads Vercel Web Analytics (`/_vercel/insights/script.js`). Turn it on in Vercel: Project > Analytics > Enable. The script only exists on Vercel, so it 404s harmlessly when running locally.
+
+## Email
+
+The contact page lists `placement@`, `guardians@`, `help@` and `press@engramyx.org`. Set up forwarding for those addresses with your domain provider, or mail sent to them will bounce.

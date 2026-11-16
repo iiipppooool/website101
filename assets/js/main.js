@@ -298,10 +298,24 @@
   addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (modal.classList.contains('open')) closeModal(); else setMenu(false); } });
 
   /* ---------- forms ---------- */
-  const store = (k, v) => { try { const a = JSON.parse(localStorage.getItem('ex_' + k) || '[]'); a.push(v); localStorage.setItem('ex_' + k, JSON.stringify(a)); } catch (_) {} };
   const refCode = () => 'EX-' + Math.random().toString(36).slice(2, 6).toUpperCase() + '-' + String(Math.floor(1000 + Math.random() * 9000));
+  const NOTE = 'Engramyx is a speculative design project. There is no real product or waitlist. What you submit is stored so the creator can count sign-ups, and is not shared or sold.';
+  // saves a submission through /api/submit; resolves 'saved', 'demo' (storage not connected yet) or 'failed'
+  const save = async (formName, data) => {
+    try {
+      const r = await fetch('/api/submit', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ form: formName, data }) });
+      if (r.ok) return 'saved';
+      return r.status === 503 || r.status === 404 ? 'demo' : 'failed';
+    } catch (_) { return 'failed'; }
+  };
   $$('form[data-form]').forEach((form) => {
-    const fields = $$('input, select, textarea', form);
+    // honeypot for bots, plus a plain statement of what the form really does
+    form.insertAdjacentHTML('afterbegin', '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">');
+    const note = `<p class="fine form-note">${NOTE}</p>`, fail = '<p class="form-fail" role="alert" hidden>That could not be saved. Please try again.</p>';
+    if (form.classList.contains('inline-form')) form.insertAdjacentHTML('afterend', fail + note);
+    else $('.form-done', form).insertAdjacentHTML('beforebegin', fail + note);
+    const failEl = form.classList.contains('inline-form') ? form.nextElementSibling : $('.form-fail', form);
+    const fields = $$('input:not([name=website]), select, textarea', form);
     const valid = (f) => {
       let ok = true;
       if (f.required) ok = f.type === 'checkbox' ? f.checked : f.value.trim() !== '';
@@ -311,25 +325,25 @@
       return ok;
     };
     fields.forEach((f) => f.addEventListener('input', () => { const h = f.closest('.field, .check'); if (h && h.classList.contains('err')) valid(f); }));
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (form.classList.contains('busy')) return;
       const bad = fields.filter((f) => !valid(f));
       if (bad.length) { bad[0].focus(); return; }
       const data = Object.fromEntries(new FormData(form));
-      form.classList.add('busy');
-      setTimeout(() => {
-        form.classList.remove('busy');
-        const out = {
-          first: data.first ? ', ' + data.first.trim() : '',
-          name: (data.first || data.name || '').trim(),
-          pos: (48112 + Math.floor(Math.random() * 900)).toLocaleString('en-GB'),
-          ref: refCode(),
-        };
-        $$('[data-out]', form).forEach((o) => (o.textContent = out[o.dataset.out] ?? ''));
-        store(form.dataset.form, { ...data, ref: out.ref, at: new Date().toISOString() });
-        form.classList.add('done');
-        form.dispatchEvent(new CustomEvent('ex:done', { detail: data }));
-      }, RM ? 100 : 1500);
+      form.classList.add('busy'); failEl.hidden = true;
+      const [result] = await Promise.all([save(form.dataset.form, data), new Promise((r) => setTimeout(r, RM ? 100 : 1200))]);
+      form.classList.remove('busy');
+      if (result === 'failed') { failEl.hidden = false; return; }
+      const out = {
+        first: data.first ? ', ' + data.first.trim() : '',
+        name: (data.first || data.name || '').trim(),
+        pos: (48112 + Math.floor(Math.random() * 900)).toLocaleString('en-GB'),
+        ref: refCode(),
+      };
+      $$('[data-out]', form).forEach((o) => (o.textContent = out[o.dataset.out] ?? ''));
+      form.classList.add('done');
+      if (form.classList.contains('inline-form') && form.nextElementSibling) form.nextElementSibling.hidden = true;
     });
   });
 

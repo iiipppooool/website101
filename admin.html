@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Submissions</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<style>
+  :root { --bg: #060809; --line: rgba(255,255,255,.1); --text: #e8eef0; --muted: #86939a; --cyan: #a5eef8; --red: #ff4034; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; padding: 32px 16px 80px; }
+  main { max-width: 1180px; margin: 0 auto; }
+  h1 { font-size: 26px; font-weight: 500; letter-spacing: -.02em; margin: 0 0 6px; }
+  p { color: var(--muted); margin: 0 0 20px; }
+  form, .bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 26px; }
+  input, select { background: transparent; border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 10px 12px; font: inherit; min-width: 0; }
+  input { flex: 1 1 240px; }
+  button { background: var(--cyan); color: #060809; border: 0; border-radius: 8px; padding: 10px 16px; font: inherit; font-weight: 500; cursor: pointer; }
+  button.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 26px; }
+  .tile { border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .tile b { display: block; font-size: 30px; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .tile span { color: var(--muted); font-size: 12px; }
+  .scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; white-space: nowrap; }
+  td.w { white-space: normal; min-width: 260px; color: var(--muted); }
+  th { color: var(--muted); font-weight: 400; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+  #msg { color: var(--red); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Submissions</h1>
+  <p>Enter your admin key to see who has signed up.</p>
+  <form id="login"><input type="password" id="key" placeholder="Admin key" autocomplete="current-password" aria-label="Admin key" required><button>View</button><span id="msg" role="alert"></span></form>
+  <div id="out" hidden>
+    <div class="tiles" id="tiles"></div>
+    <div class="bar">
+      <select id="filter" aria-label="Filter by form"><option value="">All forms</option></select>
+      <button class="ghost" id="csv">Download CSV</button>
+      <button class="ghost" id="refresh">Refresh</button>
+      <span id="shown" style="color:var(--muted)"></span>
+    </div>
+    <div class="scroll"><table><thead><tr><th>When</th><th>Form</th><th>Email</th><th>Name</th><th>Country</th><th>Other fields</th></tr></thead><tbody id="rows"></tbody></table></div>
+  </div>
+</main>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  let data = null;
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const name = (d) => [d.first, d.last].filter(Boolean).join(' ') || d.name || '';
+  const rest = (d) => Object.entries(d).filter(([k]) => !['email', 'first', 'last', 'name', 'consent'].includes(k)).map(([k, v]) => `${k}: ${v}`).join(' · ');
+  const list = () => data.entries.filter((e) => !$('#filter').value || e.form === $('#filter').value);
+  function render() {
+    const uniq = new Set(data.entries.map((e) => (e.data.email || '').toLowerCase())).size;
+    $('#tiles').innerHTML = `<div class="tile"><b>${data.total}</b><span>Total submissions</span></div><div class="tile"><b>${uniq}</b><span>Unique emails (latest ${data.entries.length})</span></div>` +
+      Object.entries(data.counts).sort((a, b) => b[1] - a[1]).map(([k, v]) => `<div class="tile"><b>${v}</b><span>${esc(k)}</span></div>`).join('');
+    const cur = $('#filter').value;
+    $('#filter').innerHTML = '<option value="">All forms</option>' + Object.keys(data.counts).map((k) => `<option ${k === cur ? 'selected' : ''}>${esc(k)}</option>`).join('');
+    const rows = list();
+    $('#rows').innerHTML = rows.map((e) => `<tr><td>${esc(new Date(e.at).toLocaleString('en-GB'))}</td><td>${esc(e.form)}</td><td>${esc(e.data.email)}</td><td>${esc(name(e.data))}</td><td>${esc(e.country)}</td><td class="w">${esc(rest(e.data))}</td></tr>`).join('') || '<tr><td colspan="6">Nothing yet.</td></tr>';
+    $('#shown').textContent = `${rows.length} shown`;
+  }
+  async function load() {
+    $('#msg').textContent = '';
+    const key = $('#key').value || sessionStorage.getItem('ex_admin') || '';
+    try {
+      const r = await fetch('/api/submissions', { headers: { 'x-admin-key': key } });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) { $('#msg').textContent = j.error || 'Could not load.'; $('#out').hidden = true; return; }
+      try { sessionStorage.setItem('ex_admin', key); } catch (_) {}
+      data = j; $('#out').hidden = false; render();
+    } catch (_) { $('#msg').textContent = 'Could not connect.'; }
+  }
+  $('#login').addEventListener('submit', (e) => { e.preventDefault(); load(); });
+  $('#refresh').addEventListener('click', load);
+  $('#filter').addEventListener('change', render);
+  $('#csv').addEventListener('click', () => {
+    const q = (v) => { let s = String(v ?? ''); if (/^[=+\-@\t\r]/.test(s)) s = "'" + s; return '"' + s.replace(/"/g, '""') + '"'; };
+    const lines = [['when', 'form', 'email', 'name', 'country', 'other'].join(',')].concat(list().map((e) => [e.at, e.form, e.data.email, name(e.data), e.country, rest(e.data)].map(q).join(',')));
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([lines.join('\n')], { type: 'text/csv' })); a.download = 'engramyx-submissions.csv'; a.click();
+  });
+  try { if (sessionStorage.getItem('ex_admin')) load(); } catch (_) {}
+})();
+</script>
+</body>
+</html>
