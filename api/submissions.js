@@ -10,10 +10,11 @@ const same = (a, b) => {
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET') { res.setHeader('Allow', 'GET'); return res.status(405).json({ error: 'Method not allowed' }); }
-  const key = process.env.ADMIN_KEY;
-  if (!key || key.length < 12) return res.status(503).json({ error: 'Set an ADMIN_KEY environment variable (12+ characters) to use this page.' });
-  if (!same(req.headers['x-admin-key'] || '', key)) return res.status(401).json({ error: 'Wrong key.' });
-  if (!configured()) return res.status(503).json({ error: 'Storage is not connected yet.' });
+  const key = (process.env.ADMIN_KEY || '').trim();
+  if (!key) return res.status(503).json({ error: 'This deployment cannot see an ADMIN_KEY. Add it in Vercel (Settings, Environment Variables, ticked for Production), then redeploy: variables only reach deployments made after they are saved.' });
+  if (key.length < 8) return res.status(503).json({ error: 'The ADMIN_KEY saved in Vercel is too short. Use at least 8 characters, then redeploy.' });
+  if (!same(String(req.headers['x-admin-key'] || '').trim(), key)) return res.status(401).json({ error: 'That is not the key saved in Vercel. Check for typos; capital letters matter.' });
+  if (!configured()) return res.status(503).json({ error: 'Your key is correct. No database is connected yet: in Vercel open Storage, create an Upstash for Redis database, connect it to this project and redeploy.' });
   try {
     const [counts, total, rows] = await pipeline([['HGETALL', KEYS.counts], ['LLEN', KEYS.list], ['LRANGE', KEYS.list, 0, 999]]);
     const c = {};

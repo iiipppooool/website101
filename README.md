@@ -56,7 +56,7 @@ Every form (waitlist, newsletter, contact, concern, job application) posts to `a
 Set-up, once:
 
 1. In Vercel: Project > Storage > Create Database > **Upstash for Redis** (free tier), and connect it to this project. That adds the `KV_REST_API_URL` and `KV_REST_API_TOKEN` environment variables for you.
-2. Add an `ADMIN_KEY` environment variable: a long random password of your own (12+ characters).
+2. Add an `ADMIN_KEY` environment variable: a password of your own (8+ characters).
 3. Redeploy.
 
 Then open `/admin`, enter the admin key, and you get totals per form, a table of submissions and a CSV download. The page is not linked from the site.
